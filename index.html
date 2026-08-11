@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glamnetic · TikTok Shop Performance</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<style>
+  :root {
+    --gn-light-pink: #ECACB4; --gn-isabelline: #FBF6F3; --gn-cinnamon: #B6637B;
+    --gn-baby-pink: #ECC0C5; --gn-misty-rose: #F4E1DB; --gn-dark-horse: #4C3933;
+    --gn-jet: #2D2D2C; --gn-silver: #A9A4A0; --gn-white: #FFFFFF;
+    --up: #4B7B5A; --down: #B6637B;
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--gn-isabelline); color:var(--gn-jet); font-family:"Sofia Pro","Poppins","Inter",Arial,sans-serif; font-size:14px; line-height:1.5; }
+  header.topbar { background:var(--gn-white); border-bottom:1px solid var(--gn-baby-pink); padding:18px 32px; display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:12px; position:sticky; top:0; z-index:20; }
+  .brand { display:flex; align-items:baseline; gap:12px; }
+  .brand .wordmark { font-family:"Freight Pro","Cormorant Garamond","Playfair Display",Georgia,serif; font-size:22px; color:var(--gn-cinnamon); }
+  .brand .subtitle { font-size:12px; text-transform:uppercase; letter-spacing:.14em; color:var(--gn-silver); }
+  .meta { font-size:12px; color:var(--gn-silver); text-align:right; }
+  nav.tabs { background:var(--gn-white); border-bottom:1px solid var(--gn-baby-pink); position:sticky; top:60px; z-index:19; overflow-x:auto; white-space:nowrap; }
+  nav.tabs .tab { display:inline-block; padding:14px 18px; font-size:13px; font-weight:600; color:var(--gn-silver); cursor:pointer; border-bottom:3px solid transparent; }
+  nav.tabs .tab.active { color:var(--gn-cinnamon); border-bottom-color:var(--gn-cinnamon); }
+  nav.tabs .tab:hover { color:var(--gn-dark-horse); }
+  main { max-width:1180px; margin:0 auto; padding:24px 32px 80px; }
+  .panel { display:none; } .panel.active { display:block; }
+  .controls { display:flex; align-items:flex-end; gap:20px; flex-wrap:wrap; background:var(--gn-white); border:1px solid var(--gn-baby-pink); border-radius:10px; padding:14px 20px; margin-bottom:24px; }
+  .field label { display:block; font-size:11px; text-transform:uppercase; letter-spacing:.1em; color:var(--gn-dark-horse); margin-bottom:4px; }
+  .field input, .field select { font-family:inherit; font-size:13px; padding:7px 10px; border:1px solid var(--gn-silver); border-radius:6px; color:var(--gn-jet); background:var(--gn-isabelline); }
+  .preset-btns { display:flex; gap:6px; flex-wrap:wrap; }
+  .preset-btns button { font-family:inherit; font-size:12px; padding:7px 12px; border-radius:999px; border:1px solid var(--gn-baby-pink); background:var(--gn-white); color:var(--gn-cinnamon); cursor:pointer; }
+  .preset-btns button.active, .preset-btns button:hover { background:var(--gn-cinnamon); color:var(--gn-white); border-color:var(--gn-cinnamon); }
+  section.block { margin-bottom:32px; }
+  .block-head { display:flex; align-items:baseline; justify-content:space-between; margin-bottom:12px; border-bottom:2px solid var(--gn-dark-horse); padding-bottom:8px; flex-wrap:wrap; gap:6px; }
+  .block-head h2 { font-family:"Sofia Pro","Poppins",Arial,sans-serif; font-size:13px; text-transform:uppercase; letter-spacing:.14em; color:var(--gn-dark-horse); margin:0; }
+  .block-head .eyebrow { font-size:11px; color:var(--gn-silver); }
+  .kpi-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(170px,1fr)); gap:12px; }
+  .kpi-card { background:var(--gn-white); border:1px solid var(--gn-baby-pink); border-radius:10px; padding:14px 16px; }
+  .kpi-card.highlight { border:2px solid var(--gn-cinnamon); }
+  .kpi-card .label { font-size:10.5px; text-transform:uppercase; letter-spacing:.07em; color:var(--gn-silver); margin-bottom:5px; }
+  .kpi-card .value { font-family:"Freight Pro","Cormorant Garamond","Playfair Display",Georgia,serif; font-size:24px; color:var(--gn-jet); }
+  .note { font-size:11.5px; color:var(--gn-silver); margin-top:8px; font-style:italic; }
+  .warn { font-size:11.5px; color:var(--gn-cinnamon); margin-top:8px; font-style:italic; background:var(--gn-misty-rose); padding:8px 12px; border-radius:6px; }
+  .pending { background:var(--gn-white); border:1px dashed var(--gn-silver); border-radius:10px; padding:20px; color:var(--gn-silver); text-align:center; font-size:13px; margin-bottom:16px; }
+  .chart-card { background:var(--gn-white); border:1px solid var(--gn-baby-pink); border-radius:10px; padding:18px; }
+  table { width:100%; border-collapse:collapse; font-size:12.5px; }
+  th, td { text-align:left; padding:8px 9px; border-bottom:1px solid var(--gn-misty-rose); white-space:nowrap; }
+  th { text-transform:uppercase; font-size:10px; letter-spacing:.05em; color:var(--gn-silver); cursor:pointer; }
+  th:hover { color:var(--gn-cinnamon); }
+  tr:hover td { background:var(--gn-isabelline); }
+  .table-card { background:var(--gn-white); border:1px solid var(--gn-baby-pink); border-radius:10px; padding:16px 18px; overflow-x:auto; }
+  .search-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; gap:10px; flex-wrap:wrap; }
+  .search-row input, .search-row select { font-family:inherit; font-size:13px; padding:7px 12px; border:1px solid var(--gn-silver); border-radius:999px; min-width:180px; }
+  .rank { color:var(--gn-silver); width:22px; display:inline-block; }
+  footer { text-align:center; color:var(--gn-silver); font-size:11px; padding:20px; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand"><span class="wordmark">Glamnetic</span><span class="subtitle">TikTok Shop Performance</span></div>
+  <div class="meta" id="metaInfo">Loading…</div>
+</header>
+
+<nav class="tabs" id="tabBar">
+  <span class="tab active" data-tab="overview">Overview</span>
+  <span class="tab" data-tab="trends">Daily Trends</span>
+  <span class="tab" data-tab="ads">Ads (GMV Max)</span>
+  <span class="tab" data-tab="promotions">Promotions</span>
+  <span class="tab" data-tab="affiliate">Affiliate / Creators</span>
+  <span class="tab" data-tab="products">Merchandising</span>
+</nav>
+
+<main>
+
+  <div class="controls">
+    <div class="field"><label>Start date</label><input type="date" id="startDate"></div>
+    <div class="field"><label>End date</label><input type="date" id="endDate"></div>
+    <div class="preset-btns" id="presetBtns">
+      <button data-preset="full">Full period</button>
+      <button data-preset="july">July only</button>
+      <button data-preset="aug">Aug 1-8</button>
+      <button data-preset="last7">Last 7 days</button>
+    </div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <section class="panel active" id="panel-overview">
+    <section class="block">
+      <div class="block-head"><h2>Monthly Performance Overview</h2><span class="eyebrow" id="overviewRange"></span></div>
+      <div class="kpi-grid" id="kpiGrid"></div>
+      <div class="note" id="overviewNote"></div>
+    </section>
+    <section class="block">
+      <div class="block-head"><h2>Shop GPM</h2><span class="eyebrow">Content efficiency, real data via Euka.ai</span></div>
+      <div class="kpi-grid" id="gpmGrid"></div>
+      <div class="warn" id="gpmWarn"></div>
+    </section>
+  </section>
+
+  <!-- TRENDS -->
+  <section class="panel" id="panel-trends">
+    <section class="block">
+      <div class="block-head"><h2>Daily GMV & Orders</h2><span class="eyebrow" id="trendsRange"></span></div>
+      <div class="chart-card"><canvas id="gmvChart" height="200"></canvas></div>
+      <div class="note" id="trendsNote"></div>
+    </section>
+    <section class="block">
+      <div class="block-head"><h2>Notable Days</h2></div>
+      <div class="table-card"><table id="calloutTable"><thead><tr><th>Date</th><th>GMV</th><th>Orders</th></tr></thead><tbody id="calloutTbody"></tbody></table></div>
+    </section>
+  </section>
+
+  <!-- ADS -->
+  <section class="panel" id="panel-ads">
+    <section class="block">
+      <div class="block-head"><h2>GMV Max Overview</h2><span class="eyebrow" id="adsRange"></span></div>
+      <div class="kpi-grid" id="adsKpi"></div>
+      <div class="warn">Ad "Conversion Value" reflects TikTok's attribution window and may exceed same-period order-level GMV — this is normal for paid attribution, not a data error.</div>
+    </section>
+    <section class="block">
+      <div class="block-head"><h2>Daily Spend, Revenue & ROAS</h2></div>
+      <div class="chart-card"><canvas id="adsChart" height="220"></canvas></div>
+    </section>
+  </section>
+
+  <!-- PROMOTIONS -->
+  <section class="panel" id="panel-promotions">
+    <section class="block">
+      <div class="block-head"><h2>Active & Recent Promotions</h2><span class="eyebrow">Jul 1 – Aug 8, 2026</span></div>
+      <div class="table-card">
+        <div class="search-row">
+          <input type="text" id="promoSearch" placeholder="Search promotion…">
+          <select id="promoStatusFilter">
+            <option value="">All statuses</option>
+            <option value="ongoing">Ongoing</option>
+            <option value="expired">Expired</option>
+            <option value="deactivated">Deactivated</option>
+          </select>
+        </div>
+        <table id="promoTable">
+          <thead><tr><th data-key="name">Promotion</th><th data-key="status">Status</th><th data-key="type">Type</th><th data-key="gmv">GMV</th><th data-key="orders">Orders</th><th data-key="discountAmount">Discount $</th><th data-key="roi">ROI</th><th data-key="avgDiscountRate">Avg. Discount</th></tr></thead>
+          <tbody id="promoTbody"></tbody>
+        </table>
+      </div>
+    </section>
+    <section class="block">
+      <div class="block-head"><h2>Top Products by Promo GMV</h2></div>
+      <div class="table-card">
+        <table id="promoProductTable"><thead><tr><th>#</th><th>Product</th><th>Promo GMV</th><th>% of GMV from Promo</th><th>CTR</th><th>CTOR</th><th>ROI</th></tr></thead><tbody id="promoProductTbody"></tbody></table>
+      </div>
+    </section>
+    <section class="block">
+      <div class="block-head"><h2>2026 Mega Campaigns</h2></div>
+      <div class="table-card">
+        <table id="campaignTable"><thead><tr><th>Campaign</th><th>Period</th><th>GMV</th><th>Orders</th><th>CTOR</th></tr></thead><tbody id="campaignTbody"></tbody></table>
+      </div>
+    </section>
+  </section>
+
+  <!-- AFFILIATE (stale, from prior snapshot) -->
+  <section class="panel" id="panel-affiliate">
+    <div class="pending">Data below is from the <strong>Jul 1–26 snapshot</strong> — pending refreshed Creator List export through Aug 8.</div>
+    <section class="block">
+      <div class="block-head"><h2>Affiliate Performance (as of Jul 26)</h2></div>
+      <div class="kpi-grid" id="affKpi"></div>
+    </section>
+    <section class="block">
+      <div class="block-head"><h2>Top Creators (as of Jul 26)</h2></div>
+      <div class="table-card">
+        <div class="search-row"><input type="text" id="creatorSearch" placeholder="Search creator…"></div>
+        <table id="creatorTable"><thead><tr><th>#</th><th>Creator</th><th>GMV</th><th>LIVE GMV</th><th>Video GMV</th><th>Orders</th><th>Followers</th></tr></thead><tbody id="creatorTbody"></tbody></table>
+      </div>
+    </section>
+  </section>
+
+  <!-- PRODUCTS (stale) -->
+  <section class="panel" id="panel-products">
+    <div class="pending">Data below is from the <strong>Jul 1–26 snapshot</strong> — pending refreshed Product List export through Aug 8.</div>
+    <section class="block">
+      <div class="block-head"><h2>Top Products (as of Jul 26)</h2></div>
+      <div class="table-card">
+        <table id="productTable"><thead><tr><th>#</th><th>Product</th><th>GMV</th><th>LIVE GMV</th><th>Video GMV</th></tr></thead><tbody id="productTbody"></tbody></table>
+      </div>
+    </section>
+  </section>
+
+</main>
+
+<footer>Internal Glamnetic dashboard · GMV/Orders/Ads via Omni Analytics · GPM via Euka.ai · Promotions via TikTok Seller Center · Updated through Aug 8, 2026</footer>
+
+<script>
+const fmtUSD = n => '$' + Number(n||0).toLocaleString('en-US', {maximumFractionDigits:0});
+const fmtUSD2 = n => '$' + Number(n||0).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+const fmtNum = n => Number(n||0).toLocaleString('en-US');
+
+let D = null, OLD = null;
+let filteredDaily = [], filteredAds = [];
+let sortKeyPromo='gmv', sortDirPromo=-1;
+
+async function load() {
+  D = await fetch('data/update-2026-08-08.json').then(r=>r.json());
+  OLD = await fetch('data/2026-07-26.json').then(r=>r.json());
+  document.getElementById('metaInfo').textContent = `Period: ${D.periodStart} → ${D.periodEnd}`;
+  document.getElementById('startDate').value = D.periodStart;
+  document.getElementById('endDate').value = D.periodEnd;
+  applyFilter();
+  renderStatic();
+}
+
+function applyFilter() {
+  const start = document.getElementById('startDate').value;
+  const end = document.getElementById('endDate').value;
+  filteredDaily = D.dailyTrend.filter(d => d.date >= start && d.date <= end);
+  filteredAds = D.ads.daily.filter(d => d.date >= start && d.date <= end);
+  document.getElementById('overviewRange').textContent = `${D.periodStart} → ${D.periodEnd}`;
+  document.getElementById('trendsRange').textContent = `${start} → ${end}`;
+  document.getElementById('adsRange').textContent = `${start} → ${end}`;
+  renderOverview();
+  renderTrends();
+  renderAds();
+  renderGpm();
+}
+
+function kpiCard(l,v,extra) {
+  return `<div class="kpi-card ${extra?'highlight':''}"><div class="label">${l}</div><div class="value" style="font-size:22px;">${v}</div></div>`;
+}
+
+function renderOverview() {
+  const gmv = filteredDaily.reduce((a,d)=>a+d.gmv,0);
+  const orders = filteredDaily.reduce((a,d)=>a+d.orders,0);
+  const aov = orders ? gmv/orders : 0;
+  document.getElementById('kpiGrid').innerHTML = [
+    kpiCard('GMV', fmtUSD(gmv)), kpiCard('Orders', fmtNum(orders)), kpiCard('AOV', fmtUSD2(aov)),
+  ].join('');
+  document.getElementById('overviewNote').textContent = D.monthlyOverview.note + ' (GMV/Orders source: Omni Analytics)';
+}
+
+function renderGpm() {
+  const g = D.shopGpm;
+  document.getElementById('gpmGrid').innerHTML = [
+    kpiCard(g.label, '$'+g.value.toFixed(2)+' / 1K views', true),
+    kpiCard('Total Shop GMV', fmtUSD(g.totalShopGmv)),
+    kpiCard('Total Video Views', fmtNum(g.totalVideoViews)),
+    kpiCard('Shop LIVE GMV', fmtUSD(g.shopLiveGmv)),
+  ].join('');
+  document.getElementById('gpmWarn').textContent = g.note;
+}
+
+function renderTrends() {
+  const labels = filteredDaily.map(d=>d.date.slice(5));
+  const ctx = document.getElementById('gmvChart');
+  if (window.gmvChartInstance) window.gmvChartInstance.destroy();
+  window.gmvChartInstance = new Chart(ctx, {
+    data: { labels, datasets: [
+      {type:'bar', label:'GMV', data: filteredDaily.map(d=>d.gmv), backgroundColor:'#B6637B'},
+      {type:'line', label:'Orders', data: filteredDaily.map(d=>d.orders), borderColor:'#4C3933', yAxisID:'y1', tension:.3}
+    ]},
+    options: { scales: { y:{ticks:{callback:v=>'$'+v.toLocaleString()}}, y1:{position:'right', grid:{drawOnChartArea:false}} } }
+  });
+  const sorted = [...filteredDaily].sort((a,b)=>b.gmv-a.gmv);
+  const notable = [...sorted.slice(0,3), ...sorted.slice(-2)];
+  document.getElementById('calloutTbody').innerHTML = notable.map(d=>`<tr><td>${d.date}</td><td>${fmtUSD(d.gmv)}</td><td>${fmtNum(d.orders)}</td></tr>`).join('');
+  document.getElementById('trendsNote').textContent = `${filteredDaily.length} days shown. Source: Omni Analytics (excludes cancelled/sample orders).`;
+}
+
+function renderAds() {
+  const spend = filteredAds.reduce((a,d)=>a+d.spend,0);
+  const revenue = filteredAds.reduce((a,d)=>a+d.revenue,0);
+  const roas = spend ? revenue/spend : 0;
+  document.getElementById('adsKpi').innerHTML = [
+    kpiCard('Ad Spend', fmtUSD(spend)), kpiCard('Ad Revenue', fmtUSD(revenue)), kpiCard('ROAS', roas.toFixed(2)+'x'),
+  ].join('');
+  const labels = filteredAds.map(d=>d.date.slice(5));
+  const ctx = document.getElementById('adsChart');
+  if (window.adsChartInstance) window.adsChartInstance.destroy();
+  window.adsChartInstance = new Chart(ctx, {
+    data: { labels, datasets: [
+      {type:'bar', label:'Spend', data: filteredAds.map(d=>d.spend), backgroundColor:'#ECC0C5'},
+      {type:'bar', label:'Revenue', data: filteredAds.map(d=>d.revenue), backgroundColor:'#B6637B'},
+      {type:'line', label:'ROAS', data: filteredAds.map(d=>d.roas), borderColor:'#4C3933', yAxisID:'y1', tension:.3}
+    ]},
+    options: { scales: { y:{ticks:{callback:v=>'$'+v.toLocaleString()}}, y1:{position:'right', grid:{drawOnChartArea:false}} } }
+  });
+}
+
+function renderStatic() {
+  renderPromos();
+  renderPromoProducts();
+  renderCampaigns();
+  renderOldAffiliate();
+  renderOldProducts();
+}
+
+function renderPromos() {
+  const search = (document.getElementById('promoSearch').value||'').toLowerCase();
+  const status = document.getElementById('promoStatusFilter').value;
+  let rows = D.promotions.topPromotions.filter(p => p.name.toLowerCase().includes(search) && (!status || p.status===status));
+  rows.sort((a,b)=>(a[sortKeyPromo]>b[sortKeyPromo]?1:-1)*sortDirPromo);
+  document.getElementById('promoTbody').innerHTML = rows.map(p=>`
+    <tr><td>${p.name}</td><td>${p.status}</td><td>${p.type||'-'}</td><td>${fmtUSD(p.gmv)}</td><td>${fmtNum(p.orders)}</td><td>${fmtUSD(p.discountAmount)}</td><td>${p.roi.toFixed(2)}</td><td>${p.avgDiscountRate||'-'}</td></tr>
+  `).join('');
+}
+function renderPromoProducts() {
+  document.getElementById('promoProductTbody').innerHTML = D.promotions.promoProducts.slice(0,20).map((p,i)=>`
+    <tr><td class="rank">${i+1}</td><td>${p.name}</td><td>${fmtUSD(p.promoGmv)}</td><td>${p.pctGmvFromPromo}</td><td>${(p.ctr*100).toFixed(2)}%</td><td>${(p.ctor*100).toFixed(2)}%</td><td>${p.roi.toFixed(2)}</td></tr>
+  `).join('');
+}
+function renderCampaigns() {
+  document.getElementById('campaignTbody').innerHTML = D.promotions.campaigns.map(c=>`
+    <tr><td>${c.name}</td><td>${c.startDate}-${c.endDate}</td><td>${fmtUSD(parseFloat(String(c.gmv).replace(/[$,]/g,'')))}</td><td>${c.orders}</td><td>${(c.ctor*100).toFixed(2)}%</td></tr>
+  `).join('');
+}
+function renderOldAffiliate() {
+  const a = OLD.affiliatePerformance;
+  document.getElementById('affKpi').innerHTML = [
+    kpiCard('Creator GMV', fmtUSD(a.creatorAttributedGmv)), kpiCard('Videos', fmtNum(a.videos)), kpiCard('LIVE Streams', fmtNum(a.liveStreams)),
+  ].join('');
+  const search = (document.getElementById('creatorSearch').value||'').toLowerCase();
+  document.getElementById('creatorTbody').innerHTML = OLD.topCreators.filter(c=>c.handle.toLowerCase().includes(search)).slice(0,30).map((c,i)=>`
+    <tr><td class="rank">${i+1}</td><td>${c.handle}</td><td>${fmtUSD(c.gmv)}</td><td>${fmtUSD(c.liveGmv)}</td><td>${fmtUSD(c.videoGmv)}</td><td>${fmtNum(c.orders)}</td><td>${fmtNum(c.followers)}</td></tr>
+  `).join('');
+}
+function renderOldProducts() {
+  document.getElementById('productTbody').innerHTML = OLD.topProducts.slice(0,20).map((p,i)=>`
+    <tr><td class="rank">${i+1}</td><td>${p.name}</td><td>${fmtUSD(p.gmv)}</td><td>${fmtUSD(p.liveGmv)}</td><td>${fmtUSD(p.videoGmv)}</td></tr>
+  `).join('');
+}
+
+document.getElementById('startDate').addEventListener('change', applyFilter);
+document.getElementById('endDate').addEventListener('change', applyFilter);
+document.getElementById('presetBtns').addEventListener('click', e => {
+  if (e.target.tagName!=='BUTTON') return;
+  const p = e.target.dataset.preset;
+  let start=D.periodStart, end=D.periodEnd;
+  if (p==='july') { start='2026-07-01'; end='2026-07-31'; }
+  if (p==='aug') { start='2026-08-01'; end='2026-08-08'; }
+  if (p==='last7') { const d=new Date(D.periodEnd); d.setDate(d.getDate()-6); start=d.toISOString().slice(0,10); end=D.periodEnd; }
+  document.getElementById('startDate').value=start;
+  document.getElementById('endDate').value=end;
+  applyFilter();
+});
+document.getElementById('promoSearch').addEventListener('input', renderPromos);
+document.getElementById('promoStatusFilter').addEventListener('change', renderPromos);
+document.getElementById('creatorSearch').addEventListener('input', renderOldAffiliate);
+document.querySelectorAll('#promoTable th').forEach(th=>th.addEventListener('click',()=>{
+  const k=th.dataset.key; if(!k) return;
+  if(sortKeyPromo===k) sortDirPromo*=-1; else {sortKeyPromo=k; sortDirPromo=-1;}
+  renderPromos();
+}));
+document.getElementById('tabBar').addEventListener('click', e => {
+  if (!e.target.classList.contains('tab')) return;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  e.target.classList.add('active');
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('panel-'+e.target.dataset.tab).classList.add('active');
+});
+
+load();
+</script>
+</body>
+</html>
