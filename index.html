@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glamnetic · TikTok Shop Performance</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<style>
+  :root {
+    --gn-light-pink: #ECACB4;
+    --gn-isabelline: #FBF6F3;
+    --gn-cinnamon: #B6637B;
+    --gn-baby-pink: #ECC0C5;
+    --gn-misty-rose: #F4E1DB;
+    --gn-dark-horse: #4C3933;
+    --gn-jet: #2D2D2C;
+    --gn-silver: #A9A4A0;
+    --gn-white: #FFFFFF;
+    --up: #4B7B5A;
+    --down: #B6637B;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--gn-isabelline);
+    color: var(--gn-jet);
+    font-family: "Sofia Pro", "Poppins", "Inter", Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  h1, h2, h3 { margin: 0; }
+  .display {
+    font-family: "Freight Pro", "Cormorant Garamond", "Playfair Display", Georgia, serif;
+  }
+  header.topbar {
+    background: var(--gn-white);
+    border-bottom: 1px solid var(--gn-baby-pink);
+    padding: 20px 32px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .brand {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .brand .wordmark {
+    font-family: "Freight Pro", "Cormorant Garamond", "Playfair Display", Georgia, serif;
+    font-size: 22px;
+    color: var(--gn-cinnamon);
+    letter-spacing: 0.02em;
+  }
+  .brand .subtitle {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--gn-silver);
+  }
+  .meta {
+    font-size: 12px;
+    color: var(--gn-silver);
+    text-align: right;
+  }
+  main {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 28px 32px 80px;
+  }
+  .controls {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    flex-wrap: wrap;
+    background: var(--gn-white);
+    border: 1px solid var(--gn-baby-pink);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 28px;
+  }
+  .field label {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--gn-dark-horse);
+    margin-bottom: 4px;
+  }
+  .field input, .field select {
+    font-family: inherit;
+    font-size: 13px;
+    padding: 7px 10px;
+    border: 1px solid var(--gn-silver);
+    border-radius: 6px;
+    color: var(--gn-jet);
+    background: var(--gn-isabelline);
+  }
+  .preset-btns { display: flex; gap: 6px; flex-wrap: wrap; }
+  .preset-btns button {
+    font-family: inherit;
+    font-size: 12px;
+    padding: 7px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--gn-baby-pink);
+    background: var(--gn-white);
+    color: var(--gn-cinnamon);
+    cursor: pointer;
+    transition: background .15s ease;
+  }
+  .preset-btns button.active, .preset-btns button:hover {
+    background: var(--gn-cinnamon);
+    color: var(--gn-white);
+    border-color: var(--gn-cinnamon);
+  }
+  section.panel {
+    margin-bottom: 40px;
+  }
+  .panel-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    border-bottom: 2px solid var(--gn-dark-horse);
+    padding-bottom: 8px;
+  }
+  .panel-head h2 {
+    font-family: "Sofia Pro", "Poppins", Arial, sans-serif;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--gn-dark-horse);
+  }
+  .panel-head .eyebrow {
+    font-size: 11px;
+    color: var(--gn-silver);
+  }
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+  }
+  .kpi-card {
+    background: var(--gn-white);
+    border: 1px solid var(--gn-baby-pink);
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+  .kpi-card .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gn-silver);
+    margin-bottom: 6px;
+  }
+  .kpi-card .value {
+    font-family: "Freight Pro", "Cormorant Garamond", "Playfair Display", Georgia, serif;
+    font-size: 28px;
+    color: var(--gn-jet);
+  }
+  .kpi-card .delta {
+    margin-top: 6px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .delta.up { color: var(--up); }
+  .delta.down { color: var(--down); }
+  .delta.flat { color: var(--gn-silver); }
+  .note {
+    font-size: 12px;
+    color: var(--gn-silver);
+    margin-top: 10px;
+    font-style: italic;
+  }
+  .chart-card {
+    background: var(--gn-white);
+    border: 1px solid var(--gn-baby-pink);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .two-col {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 800px) {
+    .two-col { grid-template-columns: 1fr; }
+  }
+  .callouts { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
+  .callout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--gn-misty-rose);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 12.5px;
+  }
+  .callout.spike { border-left: 3px solid var(--up); }
+  .callout.dip { border-left: 3px solid var(--down); }
+  .callout .amt { font-weight: 700; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+  th, td {
+    text-align: left;
+    padding: 9px 10px;
+    border-bottom: 1px solid var(--gn-misty-rose);
+  }
+  th {
+    text-transform: uppercase;
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    color: var(--gn-silver);
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+  }
+  th:hover { color: var(--gn-cinnamon); }
+  tr:hover td { background: var(--gn-isabelline); }
+  .table-card {
+    background: var(--gn-white);
+    border: 1px solid var(--gn-baby-pink);
+    border-radius: 10px;
+    padding: 16px 20px;
+    overflow-x: auto;
+  }
+  .search-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .search-row input {
+    font-family: inherit;
+    font-size: 13px;
+    padding: 7px 12px;
+    border: 1px solid var(--gn-silver);
+    border-radius: 999px;
+    min-width: 220px;
+  }
+  .split-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 800px) {
+    .split-grid { grid-template-columns: 1fr; }
+  }
+  .rank {
+    color: var(--gn-silver);
+    width: 24px;
+    display: inline-block;
+  }
+  footer {
+    text-align: center;
+    color: var(--gn-silver);
+    font-size: 11px;
+    padding: 20px;
+  }
+  .pending {
+    background: var(--gn-white);
+    border: 1px dashed var(--gn-silver);
+    border-radius: 10px;
+    padding: 24px;
+    color: var(--gn-silver);
+    text-align: center;
+    font-size: 13px;
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="wordmark">Glamnetic</span>
+    <span class="subtitle">TikTok Shop Performance</span>
+  </div>
+  <div class="meta" id="metaInfo">Loading…</div>
+</header>
+
+<main>
+
+  <div class="controls">
+    <div class="field">
+      <label>Snapshot (as of)</label>
+      <select id="snapshotSelect"></select>
+    </div>
+    <div class="field">
+      <label>Start date</label>
+      <input type="date" id="startDate">
+    </div>
+    <div class="field">
+      <label>End date</label>
+      <input type="date" id="endDate">
+    </div>
+    <div class="preset-btns" id="presetBtns">
+      <button data-preset="full">Full period</button>
+      <button data-preset="last7">Last 7 days</button>
+      <button data-preset="last14">Last 14 days</button>
+    </div>
+  </div>
+
+  <!-- MONTHLY OVERVIEW -->
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Monthly Performance Overview</h2>
+      <span class="eyebrow" id="overviewRange"></span>
+    </div>
+    <div class="kpi-grid" id="kpiGrid"></div>
+    <div class="kpi-grid" id="kpiGridExtended" style="margin-top:10px;"></div>
+    <div class="kpi-grid" id="gpmGrid" style="margin-top:10px;"></div>
+    <div class="note" id="overviewNote"></div>
+  </section>
+
+  <!-- TRAFFIC FUNNEL -->
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Traffic Funnel by Channel</h2>
+      <span class="eyebrow">Impressions → Clicks → Add-to-Cart → Orders, full period</span>
+    </div>
+    <div class="table-card">
+      <table id="funnelTable">
+        <thead>
+          <tr>
+            <th>Channel</th><th>GMV</th><th>Orders</th><th>Impressions</th><th>Clicks</th><th>CTR</th><th>Add-to-Cart Rate</th><th>CTOR (conv.)</th>
+          </tr>
+        </thead>
+        <tbody id="funnelTbody"></tbody>
+      </table>
+      <div class="note">CTOR = conversion rate from click to order. "All" totals aren't a sum of the channel rows — some orders touch more than one channel.</div>
+    </div>
+  </section>
+
+  <!-- DAILY HIGHLIGHTS -->
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Daily Performance Highlights</h2>
+      <span class="eyebrow">GMV by day, selected range</span>
+    </div>
+    <div class="two-col">
+      <div class="chart-card">
+        <canvas id="dailyChart" height="220"></canvas>
+      </div>
+      <div>
+        <div class="chart-card">
+          <h3 style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--gn-silver);margin-bottom:8px;">Notable days</h3>
+          <div class="callouts" id="calloutList"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AFFILIATE / CREATOR PERFORMANCE -->
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Affiliate / Creator Performance</h2>
+      <span class="eyebrow" id="affiliateRange"></span>
+    </div>
+    <div class="kpi-grid" id="affKpiGrid" style="margin-bottom:12px;"></div>
+    <div class="kpi-grid" id="affKpiGridExtended" style="margin-bottom:20px;"></div>
+    <div class="split-grid">
+      <div class="chart-card">
+        <h3 style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--gn-silver);margin-bottom:8px;">GMV by channel</h3>
+        <canvas id="channelChart" height="200"></canvas>
+        <div id="channelSplitNote"></div>
+      </div>
+      <div class="chart-card">
+        <h3 style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--gn-silver);margin-bottom:8px;">Sampling ROI (45-day)</h3>
+        <div id="samplingBox"></div>
+      </div>
+    </div>
+
+    <div class="table-card" style="margin-top:20px;">
+      <div class="search-row">
+        <input type="text" id="creatorSearch" placeholder="Search creator handle…">
+        <span class="note" style="margin:0;">Showing top creators by GMV · click column headers to sort</span>
+      </div>
+      <table id="creatorTable">
+        <thead>
+          <tr>
+            <th data-key="rank">#</th>
+            <th data-key="handle">Creator</th>
+            <th data-key="gmv">GMV</th>
+            <th data-key="liveGmv">LIVE GMV</th>
+            <th data-key="videoGmv">Video GMV</th>
+            <th data-key="showcaseGmv">Showcase GMV</th>
+            <th data-key="orders">Orders</th>
+            <th data-key="itemsSold">Items Sold</th>
+            <th data-key="commission">Commission</th>
+            <th data-key="aov">AOV</th>
+            <th data-key="ctr">CTR</th>
+            <th data-key="impressions">Impressions</th>
+            <th data-key="videos">Videos</th>
+            <th data-key="liveStreams">LIVE Streams</th>
+            <th data-key="targetCollabGmv">Target Collab GMV</th>
+            <th data-key="openCollabGmv">Open Collab GMV</th>
+            <th data-key="refundedGmv">Refunded GMV</th>
+            <th data-key="followers">Followers</th>
+          </tr>
+        </thead>
+        <tbody id="creatorTbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- LIVE PERFORMANCE -->
+  <section class="panel">
+    <div class="panel-head">
+      <h2>LIVE Performance</h2>
+      <span class="eyebrow">Viewer & auction detail, full period</span>
+    </div>
+    <div id="liveRealTotals"></div>
+    <div class="kpi-grid" id="liveKpiGrid" style="margin-bottom:20px;"></div>
+    <div class="chart-card">
+      <canvas id="liveChart" height="180"></canvas>
+    </div>
+  </section>
+
+  <!-- MERCHANDISING -->
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Merchandising / Listings</h2>
+      <span class="eyebrow">Top products & SKUs by GMV, with channel split</span>
+    </div>
+    <div class="table-card">
+      <table id="productTable">
+        <thead>
+          <tr><th>#</th><th>Product</th><th>Status</th><th>GMV</th><th>LIVE GMV</th><th>Video GMV</th><th>Creator GMV</th><th>Orders</th></tr>
+        </thead>
+        <tbody id="productTbody"></tbody>
+      </table>
+    </div>
+    <div class="table-card" style="margin-top:16px;">
+      <div class="search-row"><span class="note" style="margin:0;">Top SKUs (variant-level)</span></div>
+      <table id="skuTable">
+        <thead><tr><th>#</th><th>SKU / Variant</th><th>Status</th><th>GMV</th><th>Orders</th><th>Items Sold</th></tr></thead>
+        <tbody id="skuTbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ORDER INSIGHTS -->
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Order Insights</h2>
+      <span class="eyebrow">From the raw order-level export, full period</span>
+    </div>
+    <div class="split-grid">
+      <div class="chart-card">
+        <h3 style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--gn-silver);margin-bottom:8px;">Order status</h3>
+        <canvas id="statusChart" height="200"></canvas>
+      </div>
+      <div class="chart-card">
+        <h3 style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--gn-silver);margin-bottom:8px;">Top cancellation reasons</h3>
+        <div id="cancelReasonsList"></div>
+      </div>
+    </div>
+    <div class="split-grid" style="margin-top:20px;">
+      <div class="table-card">
+        <h3 style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--gn-silver);margin-bottom:8px;">Top states by orders</h3>
+        <table id="statesTable"><thead><tr><th>State</th><th>Orders</th></tr></thead><tbody id="statesTbody"></tbody></table>
+      </div>
+      <div class="table-card">
+        <h3 style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--gn-silver);margin-bottom:8px;">Category GMV (directional)</h3>
+        <table id="categoryTable"><thead><tr><th>Category</th><th>GMV</th></tr></thead><tbody id="categoryTbody"></tbody></table>
+      </div>
+    </div>
+    <div class="note" id="orderInsightsNote" style="margin-top:14px;"></div>
+  </section>
+
+  <!-- ADS PERFORMANCE -->
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Ads Performance (GMV Max)</h2>
+      <span class="eyebrow" id="adsRange"></span>
+    </div>
+    <div class="kpi-grid" id="adsKpi" style="margin-bottom:20px;"></div>
+    <div class="chart-card">
+      <canvas id="adsChart" height="200"></canvas>
+    </div>
+    <div class="note" id="adsSourceNote"></div>
+    <div class="table-card" style="margin-top:16px;">
+      <div class="search-row">
+        <input type="text" id="campaignSearch" placeholder="Search campaign…">
+        <span class="note" style="margin:0;">44 campaigns, click column headers to sort</span>
+      </div>
+      <table id="adCampaignTable">
+        <thead><tr>
+          <th data-key="name">Campaign</th><th data-key="cost">Cost</th><th data-key="skuOrders">SKU Orders</th>
+          <th data-key="costPerOrder">Cost / Order</th><th data-key="grossRevenue">Gross Revenue</th><th data-key="roi">ROI</th>
+        </tr></thead>
+        <tbody id="adCampaignTbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- PROMOTIONS -->
+  <section class="panel">
+    <div class="panel-head">
+      <h2>Promotions</h2>
+      <span class="eyebrow">Jul 1 – Aug 8, 2026 · Source: TikTok Seller Center</span>
+    </div>
+    <div class="table-card">
+      <div class="search-row">
+        <input type="text" id="promoSearch" placeholder="Search promotion…">
+        <select id="promoStatusFilter" style="font-family:inherit;font-size:13px;padding:7px 12px;border:1px solid var(--gn-silver);border-radius:999px;">
+          <option value="">All statuses</option>
+          <option value="ongoing">Ongoing</option>
+          <option value="expired">Expired</option>
+          <option value="deactivated">Deactivated</option>
+        </select>
+      </div>
+      <table id="promoTable">
+        <thead><tr>
+          <th data-key="name">Promotion</th><th data-key="status">Status</th><th data-key="type">Type</th>
+          <th data-key="gmv">GMV</th><th data-key="orders">Orders</th><th data-key="discountAmount">Discount $</th><th data-key="roi">ROI</th>
+        </tr></thead>
+        <tbody id="promoTbody"></tbody>
+      </table>
+    </div>
+    <div class="table-card" style="margin-top:16px;">
+      <div class="search-row"><span class="note" style="margin:0;">Top products by promo GMV</span></div>
+      <table id="promoProductTable"><thead><tr><th>#</th><th>Product</th><th>Promo GMV</th><th>% of GMV from Promo</th><th>CTR</th><th>CTOR</th></tr></thead><tbody id="promoProductTbody"></tbody></table>
+    </div>
+    <div class="table-card" style="margin-top:16px;">
+      <div class="search-row"><span class="note" style="margin:0;">2026 Mega Campaigns</span></div>
+      <table id="campaignTable"><thead><tr><th>Campaign</th><th>Period</th><th>GMV</th><th>Orders</th><th>CTOR</th></tr></thead><tbody id="campaignTbody"></tbody></table>
+    </div>
+  </section>
+
+</main>
+
+<footer>Internal Glamnetic dashboard · Data trails today by a 3-day margin for stability · Built from TikTok Seller Center exports</footer>
+
+<script>
+const fmtUSD = n => '$' + Number(n||0).toLocaleString('en-US', {maximumFractionDigits:0});
+const dashOr = (n, fmt) => (n===null||n===undefined) ? '—' : fmt(n);
+const fmtUSD2 = n => '$' + Number(n||0).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+const fmtNum = n => Number(n||0).toLocaleString('en-US');
+const fmtPct = n => (n>=0?'▲ ':'▼ ') + Math.abs(n).toFixed(1) + '%';
+
+let currentSnapshot = null;
+let filteredDaily = [];
+let filteredAds = [];
+let sortKey = 'gmv';
+let sortDir = -1;
+let sortKeyPromo = 'gmv';
+let sortDirPromo = -1;
+
+async function loadManifestAndSnapshot() {
+  const manifest = await fetch('data/manifest.json').then(r => r.json());
+  const select = document.getElementById('snapshotSelect');
+  manifest.slice().reverse().forEach(date => {
+    const opt = document.createElement('option');
+    opt.value = date;
+    opt.textContent = 'As of ' + date;
+    select.appendChild(opt);
+  });
+  select.value = manifest[manifest.length - 1];
+  select.addEventListener('change', () => loadSnapshot(select.value));
+  await loadSnapshot(select.value);
+}
+
+async function loadSnapshot(date) {
+  currentSnapshot = await fetch(`data/${date}.json`).then(r => r.json());
+  document.getElementById('metaInfo').textContent =
+    `Period: ${currentSnapshot.periodStart} → ${currentSnapshot.periodEnd} · Snapshot as of ${currentSnapshot.snapshotDate}`;
+  document.getElementById('startDate').value = currentSnapshot.periodStart;
+  document.getElementById('endDate').value = currentSnapshot.periodEnd;
+  applyFilter();
+}
+
+function applyFilter() {
+  const start = document.getElementById('startDate').value;
+  const end = document.getElementById('endDate').value;
+  filteredDaily = currentSnapshot.dailyTrend.filter(d => d.date >= start && d.date <= end);
+  filteredAds = (currentSnapshot.adsPerformance ? currentSnapshot.adsPerformance.daily : []).filter(d => d.date >= start && d.date <= end);
+  renderOverview(start, end);
+  renderDailyChart();
+  renderCallouts();
+  renderAffiliate();
+  renderCreatorTable();
+  renderLive();
+  renderProducts();
+  renderSkus();
+  renderOrderInsights();
+  renderGpm();
+  renderAds(start, end);
+  renderPromos();
+  renderPromoProducts();
+  renderCampaigns();
+}
+
+function renderOverview(start, end) {
+  const isFullPeriod = start === currentSnapshot.periodStart && end === currentSnapshot.periodEnd;
+  document.getElementById('overviewRange').textContent = `${start} → ${end}`;
+
+  const sum = (key) => filteredDaily.reduce((a,d) => a + (d[key]||0), 0);
+  const gmv = isFullPeriod ? currentSnapshot.monthlyOverview.gmv : sum('gmv');
+  const orders = isFullPeriod ? currentSnapshot.monthlyOverview.orders : sum('orders');
+  const customers = isFullPeriod ? currentSnapshot.monthlyOverview.customers : sum('customers');
+  const itemsSold = isFullPeriod ? currentSnapshot.monthlyOverview.itemsSold : sum('itemsSold');
+  const aov = orders ? gmv/orders : 0;
+
+  const prior = currentSnapshot.monthlyOverview.priorMonth;
+  const mom = (curr, prev) => prev ? ((curr-prev)/prev*100) : null;
+
+  const cards = [
+    {label:'GMV', value: fmtUSD(gmv), delta: isFullPeriod ? mom(gmv, prior.gmv) : null},
+    {label:'Orders', value: fmtNum(orders), delta: isFullPeriod ? mom(orders, prior.orders) : null},
+    {label:'AOV', value: fmtUSD2(aov), delta: isFullPeriod ? mom(aov, prior.aov) : null},
+    {label:'Customers', value: fmtNum(customers), delta: isFullPeriod ? mom(customers, prior.customers) : null},
+    {label:'Items Sold', value: fmtNum(itemsSold), delta: isFullPeriod ? mom(itemsSold, prior.itemsSold) : null},
+  ];
+
+  const grid = document.getElementById('kpiGrid');
+  grid.innerHTML = cards.map(c => {
+    let deltaHtml = '';
+    if (c.delta !== null) {
+      const cls = c.delta > 0.05 ? 'up' : (c.delta < -0.05 ? 'down' : 'flat');
+      deltaHtml = `<div class="delta ${cls}">${fmtPct(c.delta)} vs ${prior.label}</div>`;
+    }
+    return `<div class="kpi-card"><div class="label">${c.label}</div><div class="value">${c.value}</div>${deltaHtml}</div>`;
+  }).join('');
+
+  document.getElementById('overviewNote').textContent = isFullPeriod
+    ? currentSnapshot.monthlyOverview.note
+    : 'Custom date range selected — totals recomputed from daily data; MoM % only shown for the full snapshot period.';
+
+  // Extended KPIs (full period only — these come from the period-total export, not daily rows)
+  const mo = currentSnapshot.monthlyOverview;
+  const ctrOverall = mo.productImpressions ? (mo.productClicks / mo.productImpressions * 100) : 0;
+  const extCards = [
+    {label:'Items Refunded', value: fmtNum(mo.itemsRefunded)},
+    {label:'Items Canceled/Returned', value: fmtNum(mo.itemsCanceledReturned)},
+    {label:'Tax Collected', value: fmtUSD(mo.tax)},
+    {label:'Shipping Fees', value: fmtUSD(mo.shippingFees)},
+    {label:'Product Impressions', value: fmtNum(mo.productImpressions)},
+    {label:'Product Clicks', value: fmtNum(mo.productClicks)},
+    {label:'Overall CTR', value: ctrOverall.toFixed(2) + '%'},
+  ];
+  document.getElementById('kpiGridExtended').innerHTML = extCards.map(c =>
+    `<div class="kpi-card"><div class="label">${c.label}</div><div class="value" style="font-size:20px;">${c.value}</div></div>`
+  ).join('');
+
+  renderFunnel();
+}
+
+function renderFunnel() {
+  const tf = currentSnapshot.trafficFunnel;
+  if (!tf) return;
+  const rows = [
+    {name:'All', d: tf['All'], gmvKey:'GMV', ordersKey:'Orders', impKey:'Product impressions', clickKey:'Product clicks', ctrKey:'CTR', atcKey:'Add-to-cart rate', ctorKey:'CTOR (SKU order)'},
+    {name:'Seller LIVE', d: tf['Seller LIVE'], gmvKey:'Seller LIVE-attributed GMV', ordersKey:'Attributed orders', impKey:'Product impressions', clickKey:'Product clicks', ctrKey:'CTR', atcKey:'Add-to-cart rate', ctorKey:'CTOR (SKU order)'},
+    {name:'Seller Video', d: tf['Seller video'], gmvKey:'Seller video-attributed GMV', ordersKey:'Attributed orders', impKey:'Product impressions', clickKey:'Product clicks', ctrKey:'CTR', atcKey:'Add-to-cart rate', ctorKey:'CTOR (SKU order)'},
+    {name:'Seller Product Card', d: tf['Seller Product card'], gmvKey:'Seller product card GMV', ordersKey:'Attributed orders', impKey:'Product impressions', clickKey:'Product clicks', ctrKey:'CTR', atcKey:'Add-to-cart rate', ctorKey:'CTOR (SKU order)'},
+    {name:'Affiliate', d: tf['Affiliate'], gmvKey:'Creator-attributed GMV', ordersKey:'Attributed orders', impKey:'Product impressions', clickKey:'Product clicks', ctrKey:'CTR', atcKey:'Add-to-cart rate', ctorKey:'CTOR (SKU order)'},
+  ];
+  const tbody = document.getElementById('funnelTbody');
+  tbody.innerHTML = rows.filter(r => r.d).map(r => `
+    <tr>
+      <td>${r.name}</td>
+      <td>${fmtUSD(r.d[r.gmvKey])}</td>
+      <td>${fmtNum(r.d[r.ordersKey])}</td>
+      <td>${fmtNum(r.d[r.impKey])}</td>
+      <td>${fmtNum(r.d[r.clickKey])}</td>
+      <td>${(r.d[r.ctrKey]||0).toFixed(2)}%</td>
+      <td>${(r.d[r.atcKey]||0).toFixed(2)}%</td>
+      <td>${(r.d[r.ctorKey]||0).toFixed(2)}%</td>
+    </tr>
+  `).join('');
+}
+
+function renderDailyChart() {
+  const ctx = document.getElementById('dailyChart');
+  const labels = filteredDaily.map(d => d.date.slice(5));
+  const gmvData = filteredDaily.map(d => d.gmv);
+  if (window.dailyChartInstance) window.dailyChartInstance.destroy();
+  window.dailyChartInstance = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels,
+      datasets: [{
+        label: 'GMV',
+        data: gmvData,
+        backgroundColor: '#B6637B',
+        borderRadius: 4,
+        maxBarThickness: 22
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { display: false } },
+      scales: {
+        y: { ticks: { callback: v => '$' + v.toLocaleString() } }
+      }
+    }
+  });
+}
+
+function renderCallouts() {
+  const sorted = [...filteredDaily].sort((a,b) => b.gmv - a.gmv);
+  const spikes = sorted.slice(0,2);
+  const dips = sorted.slice(-2).reverse();
+  const list = document.getElementById('calloutList');
+  list.innerHTML =
+    spikes.map(d => `<div class="callout spike"><span>▲ ${d.date}</span><span class="amt">${fmtUSD(d.gmv)}</span></div>`).join('') +
+    dips.map(d => `<div class="callout dip"><span>▼ ${d.date}</span><span class="amt">${fmtUSD(d.gmv)}</span></div>`).join('');
+}
+
+function renderAffiliate() {
+  const a = currentSnapshot.affiliatePerformance;
+  document.getElementById('affiliateRange').textContent = `${currentSnapshot.periodStart} → ${currentSnapshot.periodEnd}`;
+  const days = (new Date(currentSnapshot.periodEnd) - new Date(currentSnapshot.periodStart)) / 86400000 + 1;
+  const gmvPerActiveCreatorDay = a.avgDailyCreatorsWithSales ? (a.creatorAttributedGmv/days/a.avgDailyCreatorsWithSales) : 0;
+  const gmvPerPostingCreatorDay = a.avgDailyCreatorsPosting ? (a.creatorAttributedGmv/days/a.avgDailyCreatorsPosting) : 0;
+
+  const cards = [
+    {label:'Creator-Attributed GMV', value: fmtUSD(a.creatorAttributedGmv)},
+    {label:'Est. Commission', value: fmtUSD(a.estCommission)},
+    {label:'Videos Posted', value: fmtNum(a.videos)},
+    {label:'LIVE Streams', value: fmtNum(a.liveStreams)},
+    {label:'GMV / Active Creator / Day', value: fmtUSD2(gmvPerActiveCreatorDay)},
+    {label:'GMV / Posting Creator / Day', value: fmtUSD2(gmvPerPostingCreatorDay)},
+  ];
+  document.getElementById('affKpiGrid').innerHTML = cards.map(c =>
+    `<div class="kpi-card"><div class="label">${c.label}</div><div class="value" style="font-size:22px;">${c.value}</div></div>`
+  ).join('');
+
+  const extCards = [
+    {label:'Avg. Daily Customers', value: fmtNum(a.avgDailyCustomers)},
+    {label:'Avg. Daily Products Sold', value: fmtNum(a.avgDailyProductsSold)},
+    {label:'Avg. Daily Products in Collabs', value: fmtNum(a.avgDailyProductsInCollabs)},
+    {label:'Avg. Daily LIVE w/ Sales', value: fmtNum(a.avgDailyLiveWithSales)},
+    {label:'Avg. Daily Videos w/ Sales', value: fmtNum(a.avgDailyVideosWithSales)},
+    {label:'Affiliate Collaborations', value: fmtNum(a.affiliateCollaborations)},
+  ];
+  document.getElementById('affKpiGridExtended').innerHTML = extCards.map(c =>
+    `<div class="kpi-card"><div class="label">${c.label}</div><div class="value" style="font-size:18px;">${c.value}</div></div>`
+  ).join('');
+
+  const ctx = document.getElementById('channelChart');
+  if (window.channelChartInstance) window.channelChartInstance.destroy();
+  window.channelChartInstance = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: ['Video', 'LIVE', 'Showcase'],
+      datasets: [{
+        data: [a.channelSplit.video, a.channelSplit.live, a.channelSplit.showcase],
+        backgroundColor: ['#B6637B', '#ECACB4', '#4C3933']
+      }]
+    },
+    options: { plugins: { legend: { position: 'bottom' } } }
+  });
+  document.getElementById('channelSplitNote').innerHTML = a.channelSplitNote ? `<div class="note">${a.channelSplitNote}</div>` : '';
+
+  const s = a.sampling;
+  document.getElementById('samplingBox').innerHTML = `
+    <div class="kpi-grid" style="grid-template-columns: 1fr 1fr;">
+      <div class="kpi-card"><div class="label">Samples Shipped</div><div class="value" style="font-size:20px;">${fmtNum(s.samplesShipped)}</div></div>
+      <div class="kpi-card"><div class="label">Content GMV</div><div class="value" style="font-size:20px;">${fmtUSD(s.contentGmv)}</div></div>
+      <div class="kpi-card"><div class="label">Est. COGS</div><div class="value" style="font-size:20px;">${fmtUSD(s.estCogs)}</div></div>
+      <div class="kpi-card"><div class="label">ROI</div><div class="value" style="font-size:20px;">${(s.roi||0).toFixed(2)}x</div></div>
+      <div class="kpi-card"><div class="label">Samples Requested</div><div class="value" style="font-size:20px;">${fmtNum(s.samplesRequested)}</div></div>
+      <div class="kpi-card"><div class="label">Canceled/Rejected</div><div class="value" style="font-size:20px;">${fmtNum(s.canceledRejected)}</div></div>
+    </div>
+    <div class="note">${s.note||''}</div>
+  `;
+}
+
+function renderCreatorTable() {
+  const search = document.getElementById('creatorSearch').value.toLowerCase();
+  let rows = currentSnapshot.topCreators.filter(c => c.handle.toLowerCase().includes(search));
+  rows.sort((a,b) => (a[sortKey] > b[sortKey] ? 1 : -1) * sortDir);
+  const tbody = document.getElementById('creatorTbody');
+  tbody.innerHTML = rows.slice(0,50).map((c,i) => `
+    <tr>
+      <td class="rank">${i+1}</td>
+      <td>${c.handle}</td>
+      <td>${fmtUSD(c.gmv)}</td>
+      <td>${dashOr(c.liveGmv, fmtUSD)}</td>
+      <td>${dashOr(c.videoGmv, fmtUSD)}</td>
+      <td>${dashOr(c.showcaseGmv, fmtUSD)}</td>
+      <td>${fmtNum(c.orders)}</td>
+      <td>${dashOr(c.itemsSold, fmtNum)}</td>
+      <td>${dashOr(c.commission, fmtUSD)}</td>
+      <td>${dashOr(c.aov, fmtUSD2)}</td>
+      <td>${c.ctr===null||c.ctr===undefined ? '—' : c.ctr.toFixed(2)+'%'}</td>
+      <td>${dashOr(c.impressions, fmtNum)}</td>
+      <td>${fmtNum(c.videos)}</td>
+      <td>${dashOr(c.liveStreams, fmtNum)}</td>
+      <td>${dashOr(c.targetCollabGmv, fmtUSD)}</td>
+      <td>${dashOr(c.openCollabGmv, fmtUSD)}</td>
+      <td>${dashOr(c.refundedGmv, fmtUSD)}</td>
+      <td>${dashOr(c.followers, fmtNum)}</td>
+    </tr>
+  `).join('');
+}
+
+function renderLive() {
+  const lp = currentSnapshot.livePerformance;
+  if (!lp) return;
+  const t = lp.totals;
+
+  if (lp.realTotals) {
+    const rt = lp.realTotals;
+    document.getElementById('liveRealTotals').innerHTML = `
+      <div class="kpi-grid" style="margin-bottom:12px;">
+        <div class="kpi-card" style="border:2px solid var(--gn-cinnamon);"><div class="label">Livestreams (real)</div><div class="value" style="font-size:20px;">${fmtNum(rt.livestreams)}</div></div>
+        <div class="kpi-card" style="border:2px solid var(--gn-cinnamon);"><div class="label">Affiliate LIVE GMV (real)</div><div class="value" style="font-size:20px;">${fmtUSD(rt.affiliateLiveGmv)}</div></div>
+        <div class="kpi-card" style="border:2px solid var(--gn-cinnamon);"><div class="label">Shop-wide LIVE GMV (real)</div><div class="value" style="font-size:20px;">${fmtUSD(rt.shopLiveGmv)}</div></div>
+      </div>
+      <div class="note" style="margin-bottom:16px;">${rt.note}</div>
+    `;
+  } else {
+    document.getElementById('liveRealTotals').innerHTML = '';
+  }
+
+  const cards = [
+    {label:'Views (real)', value: fmtNum(t['Views'])},
+    {label:'Viewers (real)', value: fmtNum(t['Viewers'])},
+    {label:'LIVE CTR (real)', value: (t['LIVE CTR']||0).toFixed(2)+'%'},
+    {label:'Show GPM (real)', value: '$'+(t['Show GPM']||0).toFixed(2)+' / 1K views'},
+    {label:'Avg. Viewing Duration (real)', value: (t['Avg. viewing duration']||0).toFixed(1)+'s'},
+  ];
+  document.getElementById('liveKpiGrid').innerHTML = cards.map(c =>
+    `<div class="kpi-card"><div class="label">${c.label}</div><div class="value" style="font-size:20px;">${c.value}</div></div>`
+  ).join('');
+
+  const julyDaily = lp.daily.filter(d => d.date >= '2026/'+currentSnapshot.periodStart.slice(5).replace('-','/'));
+  const ctx = document.getElementById('liveChart');
+  if (window.liveChartInstance) window.liveChartInstance.destroy();
+  window.liveChartInstance = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: lp.daily.map(d => d.date.slice(5)),
+      datasets: [{
+        label: 'LIVE GMV',
+        data: lp.daily.map(d => d['LIVE GMV']),
+        borderColor: '#B6637B',
+        backgroundColor: 'rgba(182,99,123,0.15)',
+        fill: true,
+        tension: 0.3
+      }]
+    },
+    options: { plugins: { legend: { display: false } }, scales: { y: { ticks: { callback: v => '$'+v.toLocaleString() } } } }
+  });
+}
+
+function renderSkus() {
+  const tbody = document.getElementById('skuTbody');
+  tbody.innerHTML = (currentSnapshot.topSkus||[]).slice(0,15).map((s,i) => `
+    <tr><td class="rank">${i+1}</td><td>${s.name}</td><td>${s.status}</td><td>${fmtUSD(s.gmv)}</td><td>${fmtNum(s.orders)}</td><td>${fmtNum(s.itemsSold)}</td></tr>
+  `).join('');
+}
+
+function renderOrderInsights() {
+  const oi = currentSnapshot.orderInsights;
+  if (!oi) return;
+
+  const statusLabels = Object.keys(oi.statusBreakdown);
+  const statusData = Object.values(oi.statusBreakdown);
+  const ctx = document.getElementById('statusChart');
+  if (window.statusChartInstance) window.statusChartInstance.destroy();
+  window.statusChartInstance = new Chart(ctx, {
+    type: 'doughnut',
+    data: { labels: statusLabels, datasets: [{ data: statusData, backgroundColor: ['#B6637B','#ECACB4','#4C3933','#A9A4A0'] }] },
+    options: { plugins: { legend: { position: 'bottom' } } }
+  });
+
+  document.getElementById('cancelReasonsList').innerHTML = Object.entries(oi.topCancelReasons).map(([reason,count]) => `
+    <div class="callout"><span>${reason}</span><span class="amt">${fmtNum(count)}</span></div>
+  `).join('');
+
+  document.getElementById('statesTbody').innerHTML = Object.entries(oi.topStatesByOrders).map(([state,count]) => `
+    <tr><td>${state}</td><td>${fmtNum(count)}</td></tr>
+  `).join('');
+
+  document.getElementById('categoryTbody').innerHTML = Object.entries(oi.categoryGmv).map(([cat,gmv]) => `
+    <tr><td>${cat}</td><td>${fmtUSD(gmv)}</td></tr>
+  `).join('');
+
+  document.getElementById('orderInsightsNote').textContent = oi.note + ` (${fmtNum(oi.totalOrderLines)} order lines analyzed)`;
+}
+
+function renderProducts() {
+  const tbody = document.getElementById('productTbody');
+  tbody.innerHTML = currentSnapshot.topProducts.slice(0,15).map((p,i) => `
+    <tr>
+      <td class="rank">${i+1}</td><td>${p.name}</td><td>${p.status||'—'}</td>
+      <td>${fmtUSD(p.gmv)}</td><td>${dashOr(p.liveGmv, fmtUSD)}</td><td>${dashOr(p.videoGmv, fmtUSD)}</td>
+      <td>${dashOr(p.creatorGmv, fmtUSD)}</td><td>${dashOr(p.orders, fmtNum)}</td>
+    </tr>
+  `).join('');
+}
+
+document.getElementById('startDate').addEventListener('change', applyFilter);
+document.getElementById('endDate').addEventListener('change', applyFilter);
+document.getElementById('creatorSearch').addEventListener('input', renderCreatorTable);
+
+document.getElementById('presetBtns').addEventListener('click', (e) => {
+  if (e.target.tagName !== 'BUTTON') return;
+  const preset = e.target.dataset.preset;
+  const end = currentSnapshot.periodEnd;
+  let start = currentSnapshot.periodStart;
+  if (preset === 'last7' || preset === 'last14') {
+    const days = preset === 'last7' ? 7 : 14;
+    const d = new Date(end);
+    d.setDate(d.getDate() - (days-1));
+    start = d.toISOString().slice(0,10);
+  }
+  document.getElementById('startDate').value = start;
+  document.getElementById('endDate').value = end;
+  applyFilter();
+});
+
+document.querySelectorAll('#creatorTable th').forEach(th => {
+  th.addEventListener('click', () => {
+    const key = th.dataset.key;
+    if (key === 'rank') return;
+    if (sortKey === key) sortDir *= -1; else { sortKey = key; sortDir = -1; }
+    renderCreatorTable();
+  });
+});
+
+function renderGpm() {
+  const g = currentSnapshot.shopGpm;
+  const el = document.getElementById('gpmGrid');
+  if (!g) { el.innerHTML = ''; return; }
+  el.innerHTML = `
+    <div class="kpi-card" style="border:2px solid var(--gn-cinnamon);"><div class="label">${g.label}</div><div class="value">$${g.value.toFixed(2)} / 1K views</div></div>
+    <div class="kpi-card"><div class="label">Total Shop GMV (period)</div><div class="value" style="font-size:20px;">${fmtUSD(g.totalShopGmv)}</div></div>
+    <div class="kpi-card"><div class="label">Total Video Views</div><div class="value" style="font-size:20px;">${fmtNum(g.totalVideoViews)}</div></div>
+    <div class="kpi-card"><div class="label">Shop LIVE GMV</div><div class="value" style="font-size:20px;">${fmtUSD(g.shopLiveGmv)}</div></div>
+  `;
+  const note = document.getElementById('overviewNote');
+  if (g.note) note.textContent = (note.textContent ? note.textContent + ' ' : '') + g.note;
+}
+
+function renderAds(start, end) {
+  const a = currentSnapshot.adsPerformance;
+  if (!a) return;
+  document.getElementById('adsRange').textContent = `${start} → ${end}`;
+  const spend = filteredAds.reduce((s,d)=>s+d.spend,0);
+  const revenue = filteredAds.reduce((s,d)=>s+d.revenue,0);
+  const roas = spend ? revenue/spend : 0;
+  document.getElementById('adsKpi').innerHTML = `
+    <div class="kpi-card"><div class="label">Ad Spend</div><div class="value" style="font-size:22px;">${fmtUSD(spend)}</div></div>
+    <div class="kpi-card"><div class="label">Ad Revenue</div><div class="value" style="font-size:22px;">${fmtUSD(revenue)}</div></div>
+    <div class="kpi-card"><div class="label">ROAS</div><div class="value" style="font-size:22px;">${roas.toFixed(2)}x</div></div>
+  `;
+  const ctx = document.getElementById('adsChart');
+  if (window.adsChartInstance) window.adsChartInstance.destroy();
+  window.adsChartInstance = new Chart(ctx, {
+    data: { labels: filteredAds.map(d=>d.date.slice(5)), datasets: [
+      {type:'bar', label:'Spend', data: filteredAds.map(d=>d.spend), backgroundColor:'#ECC0C5'},
+      {type:'bar', label:'Revenue', data: filteredAds.map(d=>d.revenue), backgroundColor:'#B6637B'},
+      {type:'line', label:'ROAS', data: filteredAds.map(d=>d.roas), borderColor:'#4C3933', yAxisID:'y1', tension:.3}
+    ]},
+    options: { plugins:{legend:{position:'bottom'}}, scales: { y:{ticks:{callback:v=>'$'+v.toLocaleString()}}, y1:{position:'right', grid:{drawOnChartArea:false}} } }
+  });
+  document.getElementById('adsSourceNote').textContent = a.note || '';
+  renderAdCampaigns();
+}
+
+let sortKeyCampaign = 'cost', sortDirCampaign = -1;
+function renderAdCampaigns() {
+  const a = currentSnapshot.adsPerformance;
+  if (!a || !a.campaigns) return;
+  const search = (document.getElementById('campaignSearch').value||'').toLowerCase();
+  let rows = a.campaigns.filter(c => (c.name||'').toLowerCase().includes(search));
+  rows.sort((x,y) => (x[sortKeyCampaign]>y[sortKeyCampaign]?1:-1)*sortDirCampaign);
+  document.getElementById('adCampaignTbody').innerHTML = rows.map(c => `
+    <tr><td>${c.name||'—'}</td><td>${fmtUSD(c.cost)}</td><td>${fmtNum(c.skuOrders)}</td><td>${fmtUSD2(c.costPerOrder)}</td><td>${fmtUSD(c.grossRevenue)}</td><td>${(c.roi||0).toFixed(2)}x</td></tr>
+  `).join('');
+}
+document.getElementById('campaignSearch').addEventListener('input', renderAdCampaigns);
+document.querySelectorAll('#adCampaignTable th').forEach(th => th.addEventListener('click', () => {
+  const key = th.dataset.key; if (!key) return;
+  if (sortKeyCampaign===key) sortDirCampaign*=-1; else { sortKeyCampaign=key; sortDirCampaign=-1; }
+  renderAdCampaigns();
+}));
+
+function renderPromos() {
+  const p = currentSnapshot.promotions;
+  if (!p) return;
+  const search = (document.getElementById('promoSearch').value||'').toLowerCase();
+  const status = document.getElementById('promoStatusFilter').value;
+  let rows = p.topPromotions.filter(pr => (pr.name||'').toLowerCase().includes(search) && (!status || pr.status===status));
+  rows.sort((a,b)=>(a[sortKeyPromo]>b[sortKeyPromo]?1:-1)*sortDirPromo);
+  document.getElementById('promoTbody').innerHTML = rows.map(pr => `
+    <tr><td>${pr.name||'—'}</td><td>${pr.status||'—'}</td><td>${pr.type||'-'}</td><td>${fmtUSD(pr.gmv)}</td><td>${fmtNum(pr.orders)}</td><td>${fmtUSD(pr.discountAmount)}</td><td>${(pr.roi||0).toFixed(2)}</td></tr>
+  `).join('');
+}
+
+function renderPromoProducts() {
+  const p = currentSnapshot.promotions;
+  if (!p) return;
+  document.getElementById('promoProductTbody').innerHTML = p.promoProducts.slice(0,20).map((pr,i) => `
+    <tr><td class="rank">${i+1}</td><td>${pr.name||'—'}</td><td>${fmtUSD(pr.promoGmv)}</td><td>${pr.pctGmvFromPromo||'—'}</td><td>${((pr.ctr||0)*100).toFixed(2)}%</td><td>${((pr.ctor||0)*100).toFixed(2)}%</td></tr>
+  `).join('');
+}
+
+function renderCampaigns() {
+  const p = currentSnapshot.promotions;
+  if (!p) return;
+  document.getElementById('campaignTbody').innerHTML = p.campaigns.map(c => `
+    <tr><td>${c.name||'—'}</td><td>${c.startDate||'—'}–${c.endDate||'—'}</td><td>${fmtUSD(parseFloat(String(c.gmv||0).replace(/[$,]/g,'')))}</td><td>${fmtNum(c.orders)}</td><td>${((c.ctor||0)*100).toFixed(2)}%</td></tr>
+  `).join('');
+}
+
+document.getElementById('promoSearch').addEventListener('input', renderPromos);
+document.getElementById('promoStatusFilter').addEventListener('change', renderPromos);
+document.querySelectorAll('#promoTable th').forEach(th => th.addEventListener('click', () => {
+  const key = th.dataset.key; if (!key) return;
+  if (sortKeyPromo === key) sortDirPromo *= -1; else { sortKeyPromo = key; sortDirPromo = -1; }
+  renderPromos();
+}));
+
+loadManifestAndSnapshot();
+</script>
+
+</body>
+</html>
