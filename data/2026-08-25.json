@@ -1,0 +1,1750 @@
+{
+  "snapshotDate": "2026-08-25",
+  "periodStart": "2026-07-01",
+  "periodEnd": "2026-08-25",
+  "source": "Omni Analytics (all sections)",
+  "monthlyOverview": {
+    "gmv": 853429.06,
+    "orders": 26907,
+    "aov": 31.72,
+    "note": "All sections sourced from Omni Analytics, Jul 1 - Aug 25 2026. Every section responds to the date filter above."
+  },
+  "dailyTrend": [
+    {
+      "date": "2026-07-01",
+      "gmv": 9303.68,
+      "orders": 340
+    },
+    {
+      "date": "2026-07-02",
+      "gmv": 9435.86,
+      "orders": 321
+    },
+    {
+      "date": "2026-07-03",
+      "gmv": 7988.7,
+      "orders": 267
+    },
+    {
+      "date": "2026-07-04",
+      "gmv": 6214.39,
+      "orders": 272
+    },
+    {
+      "date": "2026-07-05",
+      "gmv": 7961.09,
+      "orders": 315
+    },
+    {
+      "date": "2026-07-06",
+      "gmv": 9287.32,
+      "orders": 352
+    },
+    {
+      "date": "2026-07-07",
+      "gmv": 7651.05,
+      "orders": 232
+    },
+    {
+      "date": "2026-07-08",
+      "gmv": 9962.57,
+      "orders": 380
+    },
+    {
+      "date": "2026-07-09",
+      "gmv": 18331.42,
+      "orders": 533
+    },
+    {
+      "date": "2026-07-10",
+      "gmv": 12228.33,
+      "orders": 429
+    },
+    {
+      "date": "2026-07-11",
+      "gmv": 15823.38,
+      "orders": 452
+    },
+    {
+      "date": "2026-07-12",
+      "gmv": 17567.31,
+      "orders": 576
+    },
+    {
+      "date": "2026-07-13",
+      "gmv": 9872.0,
+      "orders": 314
+    },
+    {
+      "date": "2026-07-14",
+      "gmv": 8143.32,
+      "orders": 413
+    },
+    {
+      "date": "2026-07-15",
+      "gmv": 8386.39,
+      "orders": 303
+    },
+    {
+      "date": "2026-07-16",
+      "gmv": 9768.03,
+      "orders": 301
+    },
+    {
+      "date": "2026-07-17",
+      "gmv": 10415.62,
+      "orders": 420
+    },
+    {
+      "date": "2026-07-18",
+      "gmv": 11857.84,
+      "orders": 422
+    },
+    {
+      "date": "2026-07-19",
+      "gmv": 19340.92,
+      "orders": 608
+    },
+    {
+      "date": "2026-07-20",
+      "gmv": 8322.88,
+      "orders": 318
+    },
+    {
+      "date": "2026-07-21",
+      "gmv": 7650.96,
+      "orders": 251
+    },
+    {
+      "date": "2026-07-22",
+      "gmv": 10957.41,
+      "orders": 391
+    },
+    {
+      "date": "2026-07-23",
+      "gmv": 18847.16,
+      "orders": 550
+    },
+    {
+      "date": "2026-07-24",
+      "gmv": 19254.01,
+      "orders": 613
+    },
+    {
+      "date": "2026-07-25",
+      "gmv": 14921.05,
+      "orders": 477
+    },
+    {
+      "date": "2026-07-26",
+      "gmv": 18931.69,
+      "orders": 547
+    },
+    {
+      "date": "2026-07-27",
+      "gmv": 13234.68,
+      "orders": 387
+    },
+    {
+      "date": "2026-07-28",
+      "gmv": 14958.08,
+      "orders": 505
+    },
+    {
+      "date": "2026-07-29",
+      "gmv": 15957.81,
+      "orders": 467
+    },
+    {
+      "date": "2026-07-30",
+      "gmv": 15372.23,
+      "orders": 501
+    },
+    {
+      "date": "2026-07-31",
+      "gmv": 19137.82,
+      "orders": 578
+    },
+    {
+      "date": "2026-08-01",
+      "gmv": 18069.24,
+      "orders": 574
+    },
+    {
+      "date": "2026-08-02",
+      "gmv": 23483.1,
+      "orders": 723
+    },
+    {
+      "date": "2026-08-03",
+      "gmv": 9235.6,
+      "orders": 301
+    },
+    {
+      "date": "2026-08-04",
+      "gmv": 9491.77,
+      "orders": 345
+    },
+    {
+      "date": "2026-08-05",
+      "gmv": 8974.04,
+      "orders": 302
+    },
+    {
+      "date": "2026-08-06",
+      "gmv": 51538.92,
+      "orders": 1239
+    },
+    {
+      "date": "2026-08-07",
+      "gmv": 27812.44,
+      "orders": 723
+    },
+    {
+      "date": "2026-08-08",
+      "gmv": 27269.7,
+      "orders": 709
+    },
+    {
+      "date": "2026-08-09",
+      "gmv": 24053.46,
+      "orders": 780
+    },
+    {
+      "date": "2026-08-10",
+      "gmv": 10937.13,
+      "orders": 343
+    },
+    {
+      "date": "2026-08-11",
+      "gmv": 13705.66,
+      "orders": 453
+    },
+    {
+      "date": "2026-08-12",
+      "gmv": 16172.46,
+      "orders": 454
+    },
+    {
+      "date": "2026-08-13",
+      "gmv": 13754.0,
+      "orders": 473
+    },
+    {
+      "date": "2026-08-14",
+      "gmv": 20242.21,
+      "orders": 619
+    },
+    {
+      "date": "2026-08-15",
+      "gmv": 22138.5,
+      "orders": 622
+    },
+    {
+      "date": "2026-08-16",
+      "gmv": 21370.81,
+      "orders": 581
+    },
+    {
+      "date": "2026-08-17",
+      "gmv": 11455.81,
+      "orders": 449
+    },
+    {
+      "date": "2026-08-18",
+      "gmv": 10395.03,
+      "orders": 353
+    },
+    {
+      "date": "2026-08-19",
+      "gmv": 13263.1,
+      "orders": 406
+    },
+    {
+      "date": "2026-08-20",
+      "gmv": 20800.88,
+      "orders": 815
+    },
+    {
+      "date": "2026-08-21",
+      "gmv": 20654.73,
+      "orders": 637
+    },
+    {
+      "date": "2026-08-22",
+      "gmv": 19983.71,
+      "orders": 610
+    },
+    {
+      "date": "2026-08-23",
+      "gmv": 20531.35,
+      "orders": 580
+    },
+    {
+      "date": "2026-08-24",
+      "gmv": 16568.98,
+      "orders": 563
+    },
+    {
+      "date": "2026-08-25",
+      "gmv": 14441.43,
+      "orders": 418
+    }
+  ],
+  "ads": {
+    "totalSpend": 59311.39,
+    "totalRevenue": 526724.96,
+    "daily": [
+      {
+        "date": "2026-07-01",
+        "spend": 687.07,
+        "revenue": 12970.19,
+        "roas": 18.878
+      },
+      {
+        "date": "2026-07-02",
+        "spend": 819.52,
+        "revenue": 11920.13,
+        "roas": 14.545
+      },
+      {
+        "date": "2026-07-03",
+        "spend": 537.37,
+        "revenue": 6897.86,
+        "roas": 12.836
+      },
+      {
+        "date": "2026-07-04",
+        "spend": 492.97,
+        "revenue": 6678.85,
+        "roas": 13.548
+      },
+      {
+        "date": "2026-07-05",
+        "spend": 843.15,
+        "revenue": 10266.76,
+        "roas": 12.177
+      },
+      {
+        "date": "2026-07-06",
+        "spend": 343.26,
+        "revenue": 3324.8,
+        "roas": 9.686
+      },
+      {
+        "date": "2026-07-07",
+        "spend": 517.33,
+        "revenue": 3651.53,
+        "roas": 7.058
+      },
+      {
+        "date": "2026-07-08",
+        "spend": 458.77,
+        "revenue": 10394.99,
+        "roas": 22.658
+      },
+      {
+        "date": "2026-07-09",
+        "spend": 773.45,
+        "revenue": 8973.94,
+        "roas": 11.602
+      },
+      {
+        "date": "2026-07-10",
+        "spend": 624.27,
+        "revenue": 7111.56,
+        "roas": 11.392
+      },
+      {
+        "date": "2026-07-11",
+        "spend": 671.86,
+        "revenue": 7307.62,
+        "roas": 10.877
+      },
+      {
+        "date": "2026-07-12",
+        "spend": 550.59,
+        "revenue": 6676.99,
+        "roas": 12.127
+      },
+      {
+        "date": "2026-07-13",
+        "spend": 394.87,
+        "revenue": 4388.4,
+        "roas": 11.114
+      },
+      {
+        "date": "2026-07-14",
+        "spend": 353.19,
+        "revenue": 3259.46,
+        "roas": 9.229
+      },
+      {
+        "date": "2026-07-15",
+        "spend": 838.87,
+        "revenue": 6593.67,
+        "roas": 7.86
+      },
+      {
+        "date": "2026-07-16",
+        "spend": 867.83,
+        "revenue": 6796.09,
+        "roas": 7.831
+      },
+      {
+        "date": "2026-07-17",
+        "spend": 715.9,
+        "revenue": 5949.83,
+        "roas": 8.311
+      },
+      {
+        "date": "2026-07-18",
+        "spend": 703.75,
+        "revenue": 7863.71,
+        "roas": 11.174
+      },
+      {
+        "date": "2026-07-19",
+        "spend": 509.53,
+        "revenue": 4228.92,
+        "roas": 8.3
+      },
+      {
+        "date": "2026-07-20",
+        "spend": 590.67,
+        "revenue": 5294.43,
+        "roas": 8.963
+      },
+      {
+        "date": "2026-07-21",
+        "spend": 531.85,
+        "revenue": 7842.71,
+        "roas": 14.746
+      },
+      {
+        "date": "2026-07-22",
+        "spend": 701.23,
+        "revenue": 6627.11,
+        "roas": 9.451
+      },
+      {
+        "date": "2026-07-23",
+        "spend": 704.77,
+        "revenue": 9104.23,
+        "roas": 12.918
+      },
+      {
+        "date": "2026-07-24",
+        "spend": 647.26,
+        "revenue": 5591.82,
+        "roas": 8.639
+      },
+      {
+        "date": "2026-07-25",
+        "spend": 1057.38,
+        "revenue": 13087.77,
+        "roas": 12.378
+      },
+      {
+        "date": "2026-07-26",
+        "spend": 1010.25,
+        "revenue": 10917.09,
+        "roas": 10.806
+      },
+      {
+        "date": "2026-07-27",
+        "spend": 642.04,
+        "revenue": 5868.31,
+        "roas": 9.14
+      },
+      {
+        "date": "2026-07-28",
+        "spend": 653.93,
+        "revenue": 5155.92,
+        "roas": 7.885
+      },
+      {
+        "date": "2026-07-29",
+        "spend": 787.15,
+        "revenue": 6840.0,
+        "roas": 8.69
+      },
+      {
+        "date": "2026-07-30",
+        "spend": 1431.61,
+        "revenue": 19078.31,
+        "roas": 13.326
+      },
+      {
+        "date": "2026-07-31",
+        "spend": 990.22,
+        "revenue": 7738.22,
+        "roas": 7.815
+      },
+      {
+        "date": "2026-08-01",
+        "spend": 981.35,
+        "revenue": 6963.0,
+        "roas": 7.095
+      },
+      {
+        "date": "2026-08-02",
+        "spend": 962.25,
+        "revenue": 8032.35,
+        "roas": 8.347
+      },
+      {
+        "date": "2026-08-03",
+        "spend": 1308.16,
+        "revenue": 8789.03,
+        "roas": 6.719
+      },
+      {
+        "date": "2026-08-04",
+        "spend": 1243.39,
+        "revenue": 10479.28,
+        "roas": 8.428
+      },
+      {
+        "date": "2026-08-05",
+        "spend": 1954.93,
+        "revenue": 45759.49,
+        "roas": 23.407
+      },
+      {
+        "date": "2026-08-06",
+        "spend": 2478.96,
+        "revenue": 42220.59,
+        "roas": 17.032
+      },
+      {
+        "date": "2026-08-07",
+        "spend": 2327.53,
+        "revenue": 31882.05,
+        "roas": 13.698
+      },
+      {
+        "date": "2026-08-08",
+        "spend": 1963.75,
+        "revenue": 21183.55,
+        "roas": 10.787
+      },
+      {
+        "date": "2026-08-09",
+        "spend": 1783.19,
+        "revenue": 17631.91,
+        "roas": 9.888
+      },
+      {
+        "date": "2026-08-10",
+        "spend": 1810.07,
+        "revenue": 11417.69,
+        "roas": 6.308
+      },
+      {
+        "date": "2026-08-11",
+        "spend": 1650.47,
+        "revenue": 11905.56,
+        "roas": 7.213
+      },
+      {
+        "date": "2026-08-12",
+        "spend": 1401.58,
+        "revenue": 8763.27,
+        "roas": 6.252
+      },
+      {
+        "date": "2026-08-13",
+        "spend": 1686.39,
+        "revenue": 9061.14,
+        "roas": 5.373
+      },
+      {
+        "date": "2026-08-14",
+        "spend": 1921.28,
+        "revenue": 6761.04,
+        "roas": 3.519
+      },
+      {
+        "date": "2026-08-15",
+        "spend": 2060.45,
+        "revenue": 8006.42,
+        "roas": 3.886
+      },
+      {
+        "date": "2026-08-16",
+        "spend": 1840.78,
+        "revenue": 6315.78,
+        "roas": 3.431
+      },
+      {
+        "date": "2026-08-17",
+        "spend": 1004.27,
+        "revenue": 3189.61,
+        "roas": 3.176
+      },
+      {
+        "date": "2026-08-18",
+        "spend": 1599.23,
+        "revenue": 8233.69,
+        "roas": 5.149
+      },
+      {
+        "date": "2026-08-19",
+        "spend": 1239.14,
+        "revenue": 7577.91,
+        "roas": 6.115
+      },
+      {
+        "date": "2026-08-20",
+        "spend": 1320.56,
+        "revenue": 9624.66,
+        "roas": 7.288
+      },
+      {
+        "date": "2026-08-21",
+        "spend": 1250.75,
+        "revenue": 1601.99,
+        "roas": 1.281
+      },
+      {
+        "date": "2026-08-22",
+        "spend": 997.99,
+        "revenue": 0,
+        "roas": 0.0
+      },
+      {
+        "date": "2026-08-23",
+        "spend": 1002.02,
+        "revenue": 0,
+        "roas": 0.0
+      },
+      {
+        "date": "2026-08-24",
+        "spend": 1001.73,
+        "revenue": 0,
+        "roas": 0.0
+      },
+      {
+        "date": "2026-08-25",
+        "spend": 1069.26,
+        "revenue": 2923.73,
+        "roas": 2.734
+      }
+    ],
+    "campaigns": [
+      {
+        "name": "Spring+Summer-TROAS",
+        "cost": 12114.12,
+        "grossRevenue": 131981.1,
+        "conversions": 1633,
+        "roas": 10.895,
+        "costPerOrder": 7.42
+      },
+      {
+        "name": "Fall-TROAS",
+        "cost": 10987.3,
+        "grossRevenue": 81491.87,
+        "conversions": 909,
+        "roas": 7.417,
+        "costPerOrder": 12.09
+      },
+      {
+        "name": "BrandConsideration",
+        "cost": 9492.39,
+        "grossRevenue": 0,
+        "conversions": 0,
+        "roas": 0,
+        "costPerOrder": null
+      },
+      {
+        "name": "Whitelisted affiliate scaling-TCPA",
+        "cost": 8551.38,
+        "grossRevenue": 183054.85,
+        "conversions": 2043,
+        "roas": 21.406,
+        "costPerOrder": 4.19
+      },
+      {
+        "name": "QuickPress-TROAS",
+        "cost": 6998.99,
+        "grossRevenue": 67808.03,
+        "conversions": 881,
+        "roas": 9.688,
+        "costPerOrder": 7.94
+      },
+      {
+        "name": "Glamzilla",
+        "cost": 4713.57,
+        "grossRevenue": 48388.74,
+        "conversions": 639,
+        "roas": 10.266,
+        "costPerOrder": 7.38
+      },
+      {
+        "name": "Reach",
+        "cost": 3753.54,
+        "grossRevenue": 0,
+        "conversions": 0,
+        "roas": 0,
+        "costPerOrder": null
+      },
+      {
+        "name": "Evergreen | TOF | 31 Jul",
+        "cost": 1091.2,
+        "grossRevenue": 6638.16,
+        "conversions": 91,
+        "roas": 6.083,
+        "costPerOrder": 11.99
+      },
+      {
+        "name": "Evergreen | TOF | 4 Aug",
+        "cost": 736.35,
+        "grossRevenue": 2829.86,
+        "conversions": 27,
+        "roas": 3.843,
+        "costPerOrder": 27.27
+      },
+      {
+        "name": "Glamzilla (2)",
+        "cost": 593.05,
+        "grossRevenue": 1608.62,
+        "conversions": 15,
+        "roas": 2.712,
+        "costPerOrder": 39.54
+      },
+      {
+        "name": "Spells and Sparkles",
+        "cost": 279.5,
+        "grossRevenue": 2923.73,
+        "conversions": 45,
+        "roas": 10.461,
+        "costPerOrder": 6.21
+      }
+    ],
+    "note": "Ad revenue for Aug 22-24 reports $0 - a known attribution reporting lag on TikTok's side, not a real drop. BrandConsideration and Reach are awareness campaigns with no direct conversion tracking, so their ROAS shows 0 by design."
+  },
+  "livePerformance": {
+    "totalViews": 568047,
+    "totalGmv": 279602.16,
+    "overallGpm": 492.22,
+    "daily": [
+      {
+        "date": "2026-07-01",
+        "views": 6630,
+        "viewers": 4297,
+        "watchHours": 103.13,
+        "gmv": 1218.48,
+        "gpm": 183.78
+      },
+      {
+        "date": "2026-07-02",
+        "views": 4598,
+        "viewers": 3008,
+        "watchHours": 107.29,
+        "gmv": 1157.41,
+        "gpm": 251.72
+      },
+      {
+        "date": "2026-07-03",
+        "views": 8632,
+        "viewers": 5701,
+        "watchHours": 167.33,
+        "gmv": 2322.24,
+        "gpm": 269.03
+      },
+      {
+        "date": "2026-07-04",
+        "views": 0,
+        "viewers": 0,
+        "watchHours": 0,
+        "gmv": 2600.4,
+        "gpm": null
+      },
+      {
+        "date": "2026-07-05",
+        "views": 0,
+        "viewers": 0,
+        "watchHours": 0,
+        "gmv": 1867.28,
+        "gpm": null
+      },
+      {
+        "date": "2026-07-06",
+        "views": 4264,
+        "viewers": 2584,
+        "watchHours": 103.05,
+        "gmv": 1298.75,
+        "gpm": 304.58
+      },
+      {
+        "date": "2026-07-07",
+        "views": 3634,
+        "viewers": 2592,
+        "watchHours": 38.36,
+        "gmv": 2107.67,
+        "gpm": 579.99
+      },
+      {
+        "date": "2026-07-08",
+        "views": 7717,
+        "viewers": 5286,
+        "watchHours": 97.82,
+        "gmv": 2095.88,
+        "gpm": 271.59
+      },
+      {
+        "date": "2026-07-09",
+        "views": 5760,
+        "viewers": 3661,
+        "watchHours": 74.75,
+        "gmv": 9076.78,
+        "gpm": 1575.83
+      },
+      {
+        "date": "2026-07-10",
+        "views": 10134,
+        "viewers": 6703,
+        "watchHours": 189.15,
+        "gmv": 5167.32,
+        "gpm": 509.9
+      },
+      {
+        "date": "2026-07-11",
+        "views": 4336,
+        "viewers": 2577,
+        "watchHours": 102.38,
+        "gmv": 5397.92,
+        "gpm": 1244.91
+      },
+      {
+        "date": "2026-07-12",
+        "views": 0,
+        "viewers": 0,
+        "watchHours": 0,
+        "gmv": 4921.01,
+        "gpm": null
+      },
+      {
+        "date": "2026-07-13",
+        "views": 3864,
+        "viewers": 2645,
+        "watchHours": 31.13,
+        "gmv": 2398.98,
+        "gpm": 620.85
+      },
+      {
+        "date": "2026-07-14",
+        "views": 3304,
+        "viewers": 2201,
+        "watchHours": 55.98,
+        "gmv": 1547.77,
+        "gpm": 468.45
+      },
+      {
+        "date": "2026-07-15",
+        "views": 11603,
+        "viewers": 8022,
+        "watchHours": 145.93,
+        "gmv": 2352.3,
+        "gpm": 202.73
+      },
+      {
+        "date": "2026-07-16",
+        "views": 4011,
+        "viewers": 3058,
+        "watchHours": 29.98,
+        "gmv": 1063.45,
+        "gpm": 265.13
+      },
+      {
+        "date": "2026-07-17",
+        "views": 5715,
+        "viewers": 4130,
+        "watchHours": 69.66,
+        "gmv": 2218.85,
+        "gpm": 388.25
+      },
+      {
+        "date": "2026-07-18",
+        "views": 3495,
+        "viewers": 2309,
+        "watchHours": 51.45,
+        "gmv": 4332.33,
+        "gpm": 1239.58
+      },
+      {
+        "date": "2026-07-19",
+        "views": 0,
+        "viewers": 0,
+        "watchHours": 0,
+        "gmv": 3344.42,
+        "gpm": null
+      },
+      {
+        "date": "2026-07-20",
+        "views": 8714,
+        "viewers": 5379,
+        "watchHours": 188.59,
+        "gmv": 6135.17,
+        "gpm": 704.06
+      },
+      {
+        "date": "2026-07-21",
+        "views": 3370,
+        "viewers": 2418,
+        "watchHours": 29.96,
+        "gmv": 1590.58,
+        "gpm": 471.98
+      },
+      {
+        "date": "2026-07-22",
+        "views": 15728,
+        "viewers": 10325,
+        "watchHours": 270.69,
+        "gmv": 2588.92,
+        "gpm": 164.61
+      },
+      {
+        "date": "2026-07-23",
+        "views": 4005,
+        "viewers": 2844,
+        "watchHours": 32.93,
+        "gmv": 3796.43,
+        "gpm": 947.92
+      },
+      {
+        "date": "2026-07-24",
+        "views": 11518,
+        "viewers": 7435,
+        "watchHours": 355.24,
+        "gmv": 7794.93,
+        "gpm": 676.76
+      },
+      {
+        "date": "2026-07-25",
+        "views": 7291,
+        "viewers": 5075,
+        "watchHours": 109.34,
+        "gmv": 4105.56,
+        "gpm": 563.1
+      },
+      {
+        "date": "2026-07-26",
+        "views": 0,
+        "viewers": 0,
+        "watchHours": 0,
+        "gmv": 2279.76,
+        "gpm": null
+      },
+      {
+        "date": "2026-07-27",
+        "views": 3565,
+        "viewers": 2400,
+        "watchHours": 72.29,
+        "gmv": 2679.91,
+        "gpm": 751.73
+      },
+      {
+        "date": "2026-07-28",
+        "views": 6743,
+        "viewers": 4674,
+        "watchHours": 77.2,
+        "gmv": 3019.09,
+        "gpm": 447.74
+      },
+      {
+        "date": "2026-07-29",
+        "views": 11014,
+        "viewers": 7796,
+        "watchHours": 167.6,
+        "gmv": 3658.76,
+        "gpm": 332.19
+      },
+      {
+        "date": "2026-07-30",
+        "views": 12688,
+        "viewers": 8379,
+        "watchHours": 184.12,
+        "gmv": 5418.86,
+        "gpm": 427.09
+      },
+      {
+        "date": "2026-07-31",
+        "views": 9659,
+        "viewers": 7041,
+        "watchHours": 166.63,
+        "gmv": 2477.27,
+        "gpm": 256.47
+      },
+      {
+        "date": "2026-08-01",
+        "views": 20786,
+        "viewers": 13025,
+        "watchHours": 800.03,
+        "gmv": 6642.91,
+        "gpm": 319.59
+      },
+      {
+        "date": "2026-08-02",
+        "views": 12094,
+        "viewers": 7109,
+        "watchHours": 568.35,
+        "gmv": 8451.48,
+        "gpm": 698.82
+      },
+      {
+        "date": "2026-08-03",
+        "views": 9242,
+        "viewers": 5969,
+        "watchHours": 148.9,
+        "gmv": 3402.5,
+        "gpm": 368.16
+      },
+      {
+        "date": "2026-08-04",
+        "views": 8964,
+        "viewers": 5967,
+        "watchHours": 154.31,
+        "gmv": 1378.27,
+        "gpm": 153.76
+      },
+      {
+        "date": "2026-08-05",
+        "views": 10412,
+        "viewers": 7128,
+        "watchHours": 217.3,
+        "gmv": 1730.2,
+        "gpm": 166.17
+      },
+      {
+        "date": "2026-08-06",
+        "views": 31302,
+        "viewers": 17356,
+        "watchHours": 893.93,
+        "gmv": 33285.93,
+        "gpm": 1063.38
+      },
+      {
+        "date": "2026-08-07",
+        "views": 0,
+        "viewers": 0,
+        "watchHours": 0,
+        "gmv": 15675.25,
+        "gpm": null
+      },
+      {
+        "date": "2026-08-08",
+        "views": 33071,
+        "viewers": 17230,
+        "watchHours": 2086.04,
+        "gmv": 16994.25,
+        "gpm": 513.87
+      },
+      {
+        "date": "2026-08-09",
+        "views": 20063,
+        "viewers": 10541,
+        "watchHours": 1267.93,
+        "gmv": 9829.68,
+        "gpm": 489.94
+      },
+      {
+        "date": "2026-08-10",
+        "views": 14808,
+        "viewers": 8580,
+        "watchHours": 314.1,
+        "gmv": 4981.66,
+        "gpm": 336.42
+      },
+      {
+        "date": "2026-08-11",
+        "views": 8780,
+        "viewers": 5390,
+        "watchHours": 146.33,
+        "gmv": 2865.36,
+        "gpm": 326.35
+      },
+      {
+        "date": "2026-08-12",
+        "views": 16733,
+        "viewers": 10915,
+        "watchHours": 368.84,
+        "gmv": 3103.59,
+        "gpm": 185.48
+      },
+      {
+        "date": "2026-08-13",
+        "views": 17774,
+        "viewers": 12271,
+        "watchHours": 268.34,
+        "gmv": 4745.19,
+        "gpm": 266.97
+      },
+      {
+        "date": "2026-08-14",
+        "views": 15667,
+        "viewers": 10631,
+        "watchHours": 276.07,
+        "gmv": 5434.03,
+        "gpm": 346.85
+      },
+      {
+        "date": "2026-08-15",
+        "views": 25061,
+        "viewers": 13694,
+        "watchHours": 1331.16,
+        "gmv": 12681.39,
+        "gpm": 506.02
+      },
+      {
+        "date": "2026-08-16",
+        "views": 13259,
+        "viewers": 7591,
+        "watchHours": 616.93,
+        "gmv": 7404.86,
+        "gpm": 558.48
+      },
+      {
+        "date": "2026-08-17",
+        "views": 11667,
+        "viewers": 7259,
+        "watchHours": 196.92,
+        "gmv": 3581.38,
+        "gpm": 306.97
+      },
+      {
+        "date": "2026-08-18",
+        "views": 8481,
+        "viewers": 5990,
+        "watchHours": 81.8,
+        "gmv": 2537.3,
+        "gpm": 299.17
+      },
+      {
+        "date": "2026-08-19",
+        "views": 15690,
+        "viewers": 9892,
+        "watchHours": 374.99,
+        "gmv": 2251.47,
+        "gpm": 143.5
+      },
+      {
+        "date": "2026-08-20",
+        "views": 12920,
+        "viewers": 8066,
+        "watchHours": 151.95,
+        "gmv": 6526.19,
+        "gpm": 505.12
+      },
+      {
+        "date": "2026-08-21",
+        "views": 16427,
+        "viewers": 11098,
+        "watchHours": 298.54,
+        "gmv": 7208.23,
+        "gpm": 438.8
+      },
+      {
+        "date": "2026-08-22",
+        "views": 23873,
+        "viewers": 13105,
+        "watchHours": 1209.67,
+        "gmv": 5247.16,
+        "gpm": 219.79
+      },
+      {
+        "date": "2026-08-23",
+        "views": 16067,
+        "viewers": 7795,
+        "watchHours": 1053.28,
+        "gmv": 5989.96,
+        "gpm": 372.81
+      },
+      {
+        "date": "2026-08-24",
+        "views": 8978,
+        "viewers": 5446,
+        "watchHours": 122.2,
+        "gmv": 2288.51,
+        "gpm": 254.9
+      },
+      {
+        "date": "2026-08-25",
+        "views": 13936,
+        "viewers": 9438,
+        "watchHours": 175.29,
+        "gmv": 3330.93,
+        "gpm": 239.02
+      }
+    ],
+    "note": "Real Show GPM now available per day from Omni. Days showing 0 views with GMV are sessions where view data did not sync - GMV still counted."
+  },
+  "topProducts": [
+    {
+      "name": "Glamnetic Spells & Sparkles Press-On Nail Collection",
+      "gmv": 120796.82,
+      "impressions": 3692896,
+      "pageViews": 147247,
+      "itemsSold": 7863,
+      "ctr": 3.99,
+      "gpm": 32.71,
+      "aov": 15.36
+    },
+    {
+      "name": "Glamnetic Short Oval Press On Nail Collection",
+      "gmv": 82017.55,
+      "impressions": 5134760,
+      "pageViews": 149317,
+      "itemsSold": 7295,
+      "ctr": 2.91,
+      "gpm": 15.97,
+      "aov": 11.24
+    },
+    {
+      "name": "Glamnetic Fright Night Press-On Nail Collection",
+      "gmv": 61325.4,
+      "impressions": 2859695,
+      "pageViews": 117691,
+      "itemsSold": 4820,
+      "ctr": 4.12,
+      "gpm": 21.44,
+      "aov": 12.72
+    },
+    {
+      "name": "Glamnetic Super Short Press-On Nail Collection",
+      "gmv": 58265.29,
+      "impressions": 2157917,
+      "pageViews": 65741,
+      "itemsSold": 4394,
+      "ctr": 3.05,
+      "gpm": 27.0,
+      "aov": 13.26
+    },
+    {
+      "name": "Glamnetic Euro Summer Press-On Nail Collection",
+      "gmv": 36736.06,
+      "impressions": 1899081,
+      "pageViews": 86656,
+      "itemsSold": 2635,
+      "ctr": 4.56,
+      "gpm": 19.34,
+      "aov": 13.94
+    },
+    {
+      "name": "Glamnetic Sparkling Gems Press On Nail Collection",
+      "gmv": 34942.56,
+      "impressions": 1767401,
+      "pageViews": 67846,
+      "itemsSold": 2379,
+      "ctr": 3.84,
+      "gpm": 19.77,
+      "aov": 14.69
+    },
+    {
+      "name": "Glamnetic Super Short Icons 2026 Press-On Nail Collection",
+      "gmv": 34196.46,
+      "impressions": 1756983,
+      "pageViews": 38749,
+      "itemsSold": 2090,
+      "ctr": 2.21,
+      "gpm": 19.46,
+      "aov": 16.36
+    },
+    {
+      "name": "Glamnetic Goth Girl Press On Nail Collection",
+      "gmv": 25637.41,
+      "impressions": 1320540,
+      "pageViews": 57130,
+      "itemsSold": 2087,
+      "ctr": 4.33,
+      "gpm": 19.41,
+      "aov": 12.28
+    },
+    {
+      "name": "Glamnetic Press On Toenail Collection",
+      "gmv": 24357.51,
+      "impressions": 966184,
+      "pageViews": 23463,
+      "itemsSold": 2112,
+      "ctr": 2.43,
+      "gpm": 25.21,
+      "aov": 11.53
+    },
+    {
+      "name": "Glamnetic Siren's Cove Press On Nail Collection",
+      "gmv": 24289.74,
+      "impressions": 1779703,
+      "pageViews": 60681,
+      "itemsSold": 2011,
+      "ctr": 3.41,
+      "gpm": 13.65,
+      "aov": 12.08
+    },
+    {
+      "name": "Glamnetic Best-Sellers Press On Nail Collection",
+      "gmv": 22788.34,
+      "impressions": 1295698,
+      "pageViews": 46247,
+      "itemsSold": 2185,
+      "ctr": 3.57,
+      "gpm": 17.59,
+      "aov": 10.43
+    },
+    {
+      "name": "Glamnetic Spells & Sparkles Press-On Nail Bundle Collection",
+      "gmv": 16466.95,
+      "impressions": 228807,
+      "pageViews": 22849,
+      "itemsSold": 238,
+      "ctr": 9.99,
+      "gpm": 71.97,
+      "aov": 69.19
+    },
+    {
+      "name": "Glamnetic Short Squoval Press On Nail Collection",
+      "gmv": 15983.2,
+      "impressions": 643401,
+      "pageViews": 24985,
+      "itemsSold": 1420,
+      "ctr": 3.88,
+      "gpm": 24.84,
+      "aov": 11.26
+    },
+    {
+      "name": "Glamnetic Most Loved Press On Nail Collection",
+      "gmv": 15514.7,
+      "impressions": 782650,
+      "pageViews": 38008,
+      "itemsSold": 1232,
+      "ctr": 4.86,
+      "gpm": 19.82,
+      "aov": 12.59
+    },
+    {
+      "name": "Glamnetic x Glamzilla Press On Nail Collection",
+      "gmv": 14076.06,
+      "impressions": 868671,
+      "pageViews": 27723,
+      "itemsSold": 1010,
+      "ctr": 3.19,
+      "gpm": 16.2,
+      "aov": 13.94
+    },
+    {
+      "name": "Glamnetic Juicy Drop Press-On Nail Collection",
+      "gmv": 13996.17,
+      "impressions": 1121341,
+      "pageViews": 85077,
+      "itemsSold": 1237,
+      "ctr": 7.59,
+      "gpm": 12.48,
+      "aov": 11.31
+    },
+    {
+      "name": "Glamnetic Velvet & Glazed Press-On Nail Collection",
+      "gmv": 13095.34,
+      "impressions": 587313,
+      "pageViews": 30606,
+      "itemsSold": 1502,
+      "ctr": 5.21,
+      "gpm": 22.3,
+      "aov": 8.72
+    },
+    {
+      "name": "GLAMNETIC X GLAMZILLA: GLAMSQUAD FOREVER Press On Nail Collection",
+      "gmv": 12863.27,
+      "impressions": 595325,
+      "pageViews": 25068,
+      "itemsSold": 779,
+      "ctr": 4.21,
+      "gpm": 21.61,
+      "aov": 16.51
+    },
+    {
+      "name": "Glamnetic Short Oval Icons 2026 Press-On Nail Collection",
+      "gmv": 11645.07,
+      "impressions": 476822,
+      "pageViews": 14824,
+      "itemsSold": 807,
+      "ctr": 3.11,
+      "gpm": 24.42,
+      "aov": 14.43
+    },
+    {
+      "name": "Glamnetic Love Notes Press-On Nail Collection False Nails",
+      "gmv": 11149.51,
+      "impressions": 612084,
+      "pageViews": 24808,
+      "itemsSold": 963,
+      "ctr": 4.05,
+      "gpm": 18.22,
+      "aov": 11.58
+    },
+    {
+      "name": "Glamnetic French Tip Press-On Nail Collection",
+      "gmv": 11100.01,
+      "impressions": 703619,
+      "pageViews": 19500,
+      "itemsSold": 1230,
+      "ctr": 2.77,
+      "gpm": 15.78,
+      "aov": 9.02
+    },
+    {
+      "name": "Glamnetic x Fanatics Sports Press-On Nail Collection",
+      "gmv": 9794.57,
+      "impressions": 960065,
+      "pageViews": 23490,
+      "itemsSold": 424,
+      "ctr": 2.45,
+      "gpm": 10.2,
+      "aov": 23.1
+    },
+    {
+      "name": "Glamnetic Snowed In Press-On Nail Collection",
+      "gmv": 8545.11,
+      "impressions": 270008,
+      "pageViews": 13708,
+      "itemsSold": 720,
+      "ctr": 5.08,
+      "gpm": 31.65,
+      "aov": 11.87
+    },
+    {
+      "name": "Glamnetic Short Almond Icons 2026 Press-On Nail Collection",
+      "gmv": 8436.73,
+      "impressions": 352118,
+      "pageViews": 13897,
+      "itemsSold": 667,
+      "ctr": 3.95,
+      "gpm": 23.96,
+      "aov": 12.65
+    },
+    {
+      "name": "Glamnetic Press On Nail Accessories",
+      "gmv": 8419.35,
+      "impressions": 344061,
+      "pageViews": 10628,
+      "itemsSold": 691,
+      "ctr": 3.09,
+      "gpm": 24.47,
+      "aov": 12.18
+    },
+    {
+      "name": "Glamnetic Short Oval Icons Press-On Nail Collection",
+      "gmv": 8080.95,
+      "impressions": 471430,
+      "pageViews": 12524,
+      "itemsSold": 650,
+      "ctr": 2.66,
+      "gpm": 17.14,
+      "aov": 12.43
+    },
+    {
+      "name": "Glamnetic Solid Press-On Nail Collection",
+      "gmv": 7988.74,
+      "impressions": 389726,
+      "pageViews": 11254,
+      "itemsSold": 1175,
+      "ctr": 2.89,
+      "gpm": 20.5,
+      "aov": 6.8
+    },
+    {
+      "name": "Glamnetic Spring Edit Press On Nail Collection",
+      "gmv": 7922.23,
+      "impressions": 436721,
+      "pageViews": 19517,
+      "itemsSold": 664,
+      "ctr": 4.47,
+      "gpm": 18.14,
+      "aov": 11.93
+    },
+    {
+      "name": "Glamnetic Chrome Press On Nail Collection - Summer Steel",
+      "gmv": 7919.13,
+      "impressions": 591377,
+      "pageViews": 22747,
+      "itemsSold": 599,
+      "ctr": 3.85,
+      "gpm": 13.39,
+      "aov": 13.22
+    },
+    {
+      "name": "Glamnetic Short Round Press On Nail Collection",
+      "gmv": 7841.12,
+      "impressions": 266584,
+      "pageViews": 10210,
+      "itemsSold": 839,
+      "ctr": 3.83,
+      "gpm": 29.41,
+      "aov": 9.35
+    }
+  ],
+  "topCreators": [
+    {
+      "handle": "britthashtagmomlife",
+      "planType": "TARGET",
+      "gmv": 37627.7,
+      "commission": 10205.22,
+      "videos": 12,
+      "liveStreams": 35
+    },
+    {
+      "handle": "its.justjenica",
+      "planType": "TARGET",
+      "gmv": 27920.72,
+      "commission": 3509.92,
+      "videos": 68,
+      "liveStreams": 0
+    },
+    {
+      "handle": "madelisabeth",
+      "planType": "TARGET",
+      "gmv": 13545.96,
+      "commission": 3571.41,
+      "videos": 111,
+      "liveStreams": 15
+    },
+    {
+      "handle": "iamclothedinstrength",
+      "planType": "TARGET",
+      "gmv": 11310.72,
+      "commission": 1974.49,
+      "videos": 23,
+      "liveStreams": 0
+    },
+    {
+      "handle": "sunflowerhigh",
+      "planType": "TARGET",
+      "gmv": 11244.74,
+      "commission": 2911.96,
+      "videos": 0,
+      "liveStreams": 23
+    },
+    {
+      "handle": "ilyanacastaneda",
+      "planType": "TARGET",
+      "gmv": 11041.2,
+      "commission": 2939.16,
+      "videos": 23,
+      "liveStreams": 27
+    },
+    {
+      "handle": "itsninapproved",
+      "planType": "TARGET",
+      "gmv": 10268.43,
+      "commission": 1095.09,
+      "videos": 28,
+      "liveStreams": 0
+    },
+    {
+      "handle": "sparklesteph77",
+      "planType": "TARGET",
+      "gmv": 10235.0,
+      "commission": 2323.97,
+      "videos": 166,
+      "liveStreams": 1
+    },
+    {
+      "handle": "nixm19",
+      "planType": "TARGET",
+      "gmv": 9385.93,
+      "commission": 2486.46,
+      "videos": 73,
+      "liveStreams": 22
+    },
+    {
+      "handle": "prestonandtina7",
+      "planType": "TARGET",
+      "gmv": 8887.52,
+      "commission": 2380.12,
+      "videos": 29,
+      "liveStreams": 26
+    },
+    {
+      "handle": "lesliesoldano",
+      "planType": "TARGET",
+      "gmv": 8827.68,
+      "commission": 1622.69,
+      "videos": 17,
+      "liveStreams": 0
+    },
+    {
+      "handle": "britty_cent03",
+      "planType": "TARGET",
+      "gmv": 8415.66,
+      "commission": 1411.32,
+      "videos": 9,
+      "liveStreams": 0
+    },
+    {
+      "handle": "sarahjinprogress",
+      "planType": "TARGET",
+      "gmv": 7636.91,
+      "commission": 2251.97,
+      "videos": 7,
+      "liveStreams": 24
+    },
+    {
+      "handle": "sunflowerhigh",
+      "planType": "OPEN",
+      "gmv": 6511.84,
+      "commission": 1606.72,
+      "videos": 4,
+      "liveStreams": 21
+    },
+    {
+      "handle": "shannahmarie77",
+      "planType": "TARGET",
+      "gmv": 4659.48,
+      "commission": 1359.62,
+      "videos": 4,
+      "liveStreams": 39
+    },
+    {
+      "handle": "amandalee_1185",
+      "planType": "TARGET",
+      "gmv": 4084.62,
+      "commission": 1122.28,
+      "videos": 6,
+      "liveStreams": 61
+    },
+    {
+      "handle": "themomgoose3",
+      "planType": "TARGET",
+      "gmv": 3949.13,
+      "commission": 728.79,
+      "videos": 18,
+      "liveStreams": 0
+    },
+    {
+      "handle": "chelseyc1991",
+      "planType": "OPEN",
+      "gmv": 3801.9,
+      "commission": 627.99,
+      "videos": 25,
+      "liveStreams": 4
+    },
+    {
+      "handle": "jensawww",
+      "planType": "OPEN",
+      "gmv": 3667.68,
+      "commission": 569.13,
+      "videos": 16,
+      "liveStreams": 8
+    },
+    {
+      "handle": "yolie72675",
+      "planType": "TARGET",
+      "gmv": 3577.81,
+      "commission": 871.98,
+      "videos": 16,
+      "liveStreams": 28
+    },
+    {
+      "handle": "lacoronel90",
+      "planType": "OPEN",
+      "gmv": 3236.77,
+      "commission": 131.34,
+      "videos": 0,
+      "liveStreams": 0
+    },
+    {
+      "handle": "britty_cent03",
+      "planType": "OPEN",
+      "gmv": 3136.12,
+      "commission": 645.31,
+      "videos": 8,
+      "liveStreams": 0
+    },
+    {
+      "handle": "virireviews",
+      "planType": "TARGET",
+      "gmv": 3098.71,
+      "commission": 588.89,
+      "videos": 11,
+      "liveStreams": 0
+    },
+    {
+      "handle": "autumn0998",
+      "planType": "OPEN",
+      "gmv": 3041.43,
+      "commission": 713.23,
+      "videos": 33,
+      "liveStreams": 19
+    },
+    {
+      "handle": "heycillaa",
+      "planType": "TARGET",
+      "gmv": 3018.54,
+      "commission": 800.61,
+      "videos": 64,
+      "liveStreams": 13
+    },
+    {
+      "handle": "thatangelavibe",
+      "planType": "TARGET",
+      "gmv": 2983.3,
+      "commission": 830.91,
+      "videos": 2,
+      "liveStreams": 11
+    },
+    {
+      "handle": "renee_loves_lists",
+      "planType": "TARGET",
+      "gmv": 2815.05,
+      "commission": 750.94,
+      "videos": 9,
+      "liveStreams": 39
+    },
+    {
+      "handle": "thatdotspotgirl",
+      "planType": "TARGET",
+      "gmv": 2685.02,
+      "commission": 638.99,
+      "videos": 51,
+      "liveStreams": 4
+    },
+    {
+      "handle": "outspokenvegan",
+      "planType": "OPEN",
+      "gmv": 2669.69,
+      "commission": 524.83,
+      "videos": 4,
+      "liveStreams": 0
+    },
+    {
+      "handle": "annmcferran",
+      "planType": "OPEN",
+      "gmv": 2319.42,
+      "commission": 369.63,
+      "videos": 15,
+      "liveStreams": 0
+    }
+  ],
+  "trafficFunnel": [
+    {
+      "channel": "Product Card",
+      "gmv": 370168.92,
+      "impressions": 10521466,
+      "pageViews": 556783,
+      "ctr": 5.29
+    },
+    {
+      "channel": "Video",
+      "gmv": 276226.31,
+      "impressions": 24466901,
+      "pageViews": 754338,
+      "ctr": 3.08
+    },
+    {
+      "channel": "LIVE",
+      "gmv": 224071.82,
+      "impressions": 9514463,
+      "pageViews": 447138,
+      "ctr": 4.7
+    }
+  ]
+}
